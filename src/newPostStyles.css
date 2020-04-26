@@ -1,0 +1,13 @@
+.pairs{
+    display: flex;
+    flex-direction: row;
+}
+
+.OuterContainer{
+    text-align: center;
+    color: white;
+    background-color: dodgerblue;
+    padding: "10px";
+    font-family: "Arial";
+    width: "50vw";
+}
