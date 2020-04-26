@@ -4,10 +4,36 @@
 }
 
 .OuterContainer{
+    border-radius: 50px;
+    align-self: center;
     text-align: center;
-    color: white;
-    background-color: dodgerblue;
+    color: black;
+    background-color: #EBEBEB;
     padding: "10px";
     font-family: "Arial";
-    width: "50vw";
+    width: 50vw;
+    height: 75vh;
+}
+
+.occupy{
+    width: 30vw;
+}
+
+label{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 55px;
+    text-align: center;
+}
+
+.submitButton{
+    background: #00693E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    color: white;
 }
