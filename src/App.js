@@ -11,7 +11,7 @@ import Login from './components/login';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={authenticated: true}
+    this.state={authenticated: false}
   }
   render() {
 
@@ -23,7 +23,7 @@ class App extends Component {
         )
       }
       else {
-        loginOrAllEvents=<p>bruhhh</p>
+        loginOrAllEvents=<p>Bruhhh</p>
       }
 
     
