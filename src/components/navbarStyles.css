@@ -52,5 +52,13 @@
   .navbarlinks a:hover {
     background-color: #65B1FC;
   }
+
+  .kegpic {
+      position: relative;
+      width: 8%;
+      height: 8%;
+      left: -10vh;
+      top: 2vh;
+  }
   
   
