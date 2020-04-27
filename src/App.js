@@ -31,9 +31,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="App-header">
+          {/* <header className="App-header">
             <h1 className="App-title">Welcome to React</h1>
-          </header>
+          </header> */}
+           <NavBar/>
           <div>
             {/* <Route exact path="/" component={Home} /> */}
             <Route exact path="/allevents" component={Calendar} />
@@ -43,8 +44,6 @@ class App extends Component {
           </div>
           <body>
              {loginOrAllEvents}
-            <Filter/>
-            <NavBar/>
           </body>
         </div>
       </Router>

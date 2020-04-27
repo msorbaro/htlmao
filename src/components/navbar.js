@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './navbarStyles.css'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class NavBar extends Component {
@@ -6,43 +7,40 @@ class NavBar extends Component {
         super(props);
 
         this.state = {
-            authenticated: true
+            authenticated: true //goes in app.js!!!
         }
     }
 
-    signout = () => {
-        return (
-            this.setState({authenticated: false})
-            //let  other components know change of state
+    // signout = () => {
+    //     return (
+    //         this.setState({authenticated: false})
+    //         //let  other components know change of state
 
-        );
-    };
+    //     );
+    // };
 
     renderNav() {
         if(this.state.authenticated) {
             return (
-                <div>
-                    I'm the navbar component
-                    <li>
+                <div className="navbar">
+                    <div className="navbarlinks">
                         <Link to="/login">
-                            <button id="logout" onClick={this.signout}>Log Out</button>
+                            <a className="logout">Log Out</a>
                         </Link>
-                    </li>
-                    <li id="allEvents">
-                        <Link to="/allevents">
-                            <button id="allEventsButton">All Events</button>
-                        </Link>
-                    </li>
-                    <li id="myEvents">
-                        <Link to="/myevents">
-                            <button id="myEventsButton">My Events</button>
-                        </Link>
-                    </li>
-                    <li id="postEvent">
                         <Link to="/postevent">
-                            <button id="postEventButton">Post an Event</button>
+                            <a>Post an Event</a>
                         </Link>
-                    </li>
+                        <Link to="/myevents">
+                            <a>My Events</a>
+                        </Link>
+                        <Link to="/allevents">
+                            <a>All Events</a>
+                        </Link>
+                    </div>
+
+                    <header className="TheKeg">The Keg</header>
+                    <h1 className="Whatsontap">What's on tap for today?</h1>
+
                 </div>  
             );
         }

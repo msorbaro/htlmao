@@ -1,0 +1,56 @@
+/* .green-rectangle {
+  background-color: #00693E;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+.TheKeg {
+    position: relative;
+    left: -50vh;
+  
+    font-size: 100px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Roboto;
+    color: #FFFFFF; 
+    /* 
+    font-size: 110px;
+    line-height: 13%;
+    */
+  } 
+  
+  .Whatsontap {
+    position: relative;
+    left: -5.5vh;
+    top: 10vh;
+  
+    font-size: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Roboto;
+    color: #FFFFFF;
+  }
+  
+  .navbar {
+    overflow: hidden;
+    background-color: #00693E;
+    min-height: 20vh;
+    flex-direction: row-reverse;
+    display: flex;
+  }
+  
+  .navbarlinks a {
+    float: right;
+    font-family: Roboto;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 30px 14px;
+    text-decoration: none;
+  }
+  .navbarlinks a:hover {
+    background-color: #65B1FC;
+  }
+  
+  
