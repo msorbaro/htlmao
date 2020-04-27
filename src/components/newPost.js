@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import { flexibleCompare } from '@fullcalendar/core';
 import '../newPostStyles.css';
+import Event from './event';
+import { Map } from 'immutable';
 
 class NewPost extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            events: Map(), 
+            eventID: 0, 
             StudentGroup:"",
             EventTitle:"",
             Time:"",
@@ -19,9 +23,10 @@ class NewPost extends Component {
 
     // How to delete everything
     // Every new event or post should have an id passed to it as a prop
-    deletePosting = () => {
-        this.props.delete(this.props.id)
+    delete = (id) => {
+        this.setState({events: this.state.events.delete(id)})
     }
+
     changeStudentGroup = (event) => {
         this.setState({StudentGroup: event.target.value});
         // console.log(this.state.StudentGroup);
@@ -50,21 +55,77 @@ class NewPost extends Component {
         this.setState({Food: event.target.value});
         // console.log(this.state.Food);
     }
-    handleSubmit = (event) => {
-        // Submitted my shit
-        // console.log(this.state.StudentGroup);
-        // console.log(this.state.Category);
-        // console.log(this.state.AdditionalDescription);
-        alert(this.state.StudentGroup +" "+ this.state.Category +" "+ this.state.AdditionalDescription);
-        event.preventDefault()
-        // The above line prevents shit from resreshing and being set to null or default value
-    }
+    // handleSubmit = (event) => {
+    //     var eventData = {
+    //         studentGoup: this.state.StudentGroup,
+    //         eventTitle: this.state.EventTitle,
+    //         time: this.state.Time,
+    //         place: this.state.Place,
+    //         additionalDescription: this.state.AdditionalDescription,
+    //         category: this.state.Category,
+    //         food: this.state.Food
+    //       }
+
+    //     this.setState({
+    //         events: this.state.events.set(this.state.eventID, eventData),
+    //         eventID: this.state.eventID +1,
+    //         // StudentGroup:"",
+    //         // EventTitle:"",
+    //         // Time:"",
+    //         // Place:"",
+    //         // AdditionalDescription:"",
+    //         // Category:"Athletics",
+    //         // Food:"No"
+    //     })
+
+    //     // Submitted my shit
+    //     // console.log(this.state.StudentGroup);
+    //     // console.log(this.state.Category);
+    //     // console.log(this.state.AdditionalDescription);
+    //     // alert(this.state.StudentGroup +" "+ this.state.Category +" "+ this.state.AdditionalDescription);
+    //     // event.preventDefault()
+    //     // The above line prevents shit from resreshing and being set to null or default value
+    // }
 
     // This looks dumb as hell right now
     // I will try to add some functionality
     // All the informatio that is passed in is saved in the state and should be displayed using that
 
     render() {
+        // let allEvents = null;
+        // if(this.state.events != null) {
+        //   allEvents = Object.keys(this.state.events).map((id) => {
+        //     const info = this.state.events[id];
+        //     return <Event 
+        //       save={this.save} 
+        //       delete={this.delete} 
+        //       studentGroup={info.StudentGroup} 
+        //       eventTitle={info.EventTitle} 
+        //       time={info.Time} 
+        //       place={info.Place} 
+        //       additionalDescription={info.AdditionalDescription}
+        //       category={info.Category}
+        //       food={info.Food}
+        //       id={id} />
+        //   })
+        // }
+
+        const allEvents = this.state.events.entrySeq().map(
+            ([id, event]) => {
+            return <Event 
+            //   save={this.save} 
+            //   delete={this.delete} 
+              studentGroup={event.StudentGroup} 
+              eventTitle={event.EventTitle} 
+              time={event.Time} 
+              place={event.Place} 
+              additionalDescription={event.AdditionalDescription}
+              category={event.Category}
+              food={event.Food}
+              id={id} />
+            })
+            console.log(this.state.events)
+
         return (
             // <div>
             //     <p>I'm the component for a new post!</p>
@@ -104,6 +165,7 @@ class NewPost extends Component {
             //         </div>
             //     </div>
             // </div>
+            <div>
             <form onSubmit={this.handleSubmit}>
                 <div class="OuterContainer">
                     <br />
@@ -162,6 +224,8 @@ class NewPost extends Component {
                     <br />
                 </div>
             </form>
+            {allEvents}
+            </div>
         )
     }
 }
