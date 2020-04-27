@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class SignIn extends Component {
   constructor(props) {
@@ -12,9 +13,29 @@ class SignIn extends Component {
 
   render() {
       return (
-          <div>
-              <p>I'm the sign in component</p>
-          </div>
+        <form onSubmit={this.handleSubmit}>
+            <div class="OuterContainer">
+                <div>
+                  <h1>Sign In</h1>
+                </div>
+                    <br />
+                    <div>
+                        <label>Dartmouth Email:   </label>
+                        <input class="occupy" type="text" value={this.state.email} onChange={this.changeEmail} /> 
+                        {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
+                    </div>
+                    <br />
+                    <div>
+                        <label>Password:   </label>
+                        <input class="occupy" type="text" value={this.state.password} onChange={this.changePassword}/>
+                    </div>
+                    <br />
+                    <Link to="/allevents">
+                        <button class="submitButton" type="submit">Login</button>
+                    </Link>
+                    <br />
+                </div>
+            </form>
       )
   }
 }

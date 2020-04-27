@@ -15,11 +15,11 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <div> I'm the login component. If you're seeing this you are NOT logged in. </div>
+            <div class = "LoginPage">
+                {/* <div> I'm the login component. If you're seeing this you are NOT logged in. </div>
                 <Link to="/allevents"> 
                     <button>Press me to login</button>
-                </Link>   
+                </Link>    */}
                 <SignIn/>
                 <SignUp/>
             </div>    
