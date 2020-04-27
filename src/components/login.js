@@ -20,6 +20,16 @@ class Login extends Component {
                 <Link to="/allevents"> 
                     <button>Press me to login</button>
                 </Link>    */}
+
+                <div className="loginnavbar">
+                    <img src={require('../images/wine.png')} alt="keg pic" className="loginkegpic"/>
+                    <header className="loginTheKeg">The Keg</header>
+                    <h1 className="loginWhatsontap">What's on tap for today?</h1>
+
+                   
+
+                </div>  
+
                 <SignIn/>
                 <SignUp/>
             </div>    

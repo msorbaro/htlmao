@@ -1,64 +1,95 @@
 /* .green-rectangle {
-  background-color: #00693E;
-  min-height: 20vh;
-  display: flex;
-  flex-direction: column;
+background-color: #00693E;
+min-height: 20vh;
+display: flex;
+flex-direction: column;
 } */
 
 .TheKeg {
-    position: relative;
-    left: -50vh;
-  
-    font-size: 100px;
-    font-style: normal;
-    font-weight: bold;
-    font-family: Roboto;
-    color: #FFFFFF; 
-    /* 
-    font-size: 110px;
-    line-height: 13%;
-    */
-  } 
-  
-  .Whatsontap {
-    position: relative;
-    left: -5.5vh;
-    top: 10vh;
-  
-    font-size: 30px;
-    font-style: normal;
-    font-weight: normal;
-    font-family: Roboto;
-    color: #FFFFFF;
-  }
-  
-  .navbar {
-    overflow: hidden;
-    background-color: #00693E;
-    min-height: 20vh;
-    flex-direction: row-reverse;
-    display: flex;
-  }
-  
-  .navbarlinks a {
-    float: right;
-    font-family: Roboto;
-    font-size: 20px;
-    color: white;
-    text-align: center;
-    padding: 30px 14px;
-    text-decoration: none;
-  }
-  .navbarlinks a:hover {
-    background-color: #65B1FC;
-  }
+  position: relative;
+  left: -75vh;
+  font-size: 66px;
+  font-style: normal;
+  font-weight: bold;
+  font-family: Roboto;
+  color: #FFFFFF; 
+} 
 
-  .kegpic {
-      position: relative;
-      width: 8%;
-      height: 8%;
-      left: -10vh;
-      top: 2vh;
-  }
+.Whatsontap {
+  position: relative;
+  left: -45.5vh;
+  top: 7vh;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-family: Roboto;
+  color: #FFFFFF;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #00693E;
+  min-height: 14vh;
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+.navbarlinks a {
+  float: right;
+  font-family: Roboto;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 18px 14px;
+  text-decoration: none;
+}
+.navbarlinks a:hover {
+  background-color: #65B1FC;
+}
+
+.kegpic {
+    position: relative;
+    width: 5.5%;
+    height: 5.5%;
+    left: -49vh;
+    top: 1vh;
+}
+
+.loginnavbar {
+  overflow: hidden;
+  background-color: #00693E;
+  min-height: 14vh;
+  flex-direction: row;
+  display: flex;
+}
+
+.loginTheKeg {
+  position: relative;
+  left: 4.4vh;
+  font-size: 66px;
+  font-style: normal;
+  font-weight: bold;
+  font-family: Roboto;
+  color: #FFFFFF;
+}
+
+.loginWhatsontap {
+  position: relative;
+  left: -29.35vh;
+  top: 7.5vh;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-family: Roboto;
+  color: #FFFFFF;
+}
+
+.loginkegpic {
+  position: relative;
+  width: 5.5%;
+  height: 5.5%;
+  left: 2vh;
+  top: 1vh;
+}
   
   

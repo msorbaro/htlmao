@@ -31,12 +31,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* <header className="App-header">
-            <h1 className="App-title">Welcome to React</h1>
-          </header> */}
-           <NavBar/>
           <div>
-            {/* <Route exact path="/" component={Home} /> */}
             <Route exact path="/allevents" component={Calendar} />
             <Route exact path="/myevents" component={Calendar} />
             <Route exact path="/postevent" component={NewPost} />

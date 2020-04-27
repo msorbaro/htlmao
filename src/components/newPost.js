@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { flexibleCompare } from '@fullcalendar/core';
 import '../newPostStyles.css';
+import NavBar from './navbar';
 
 class NewPost extends Component {
     constructor(props) {
@@ -104,64 +105,67 @@ class NewPost extends Component {
             //         </div>
             //     </div>
             // </div>
-            <form onSubmit={this.handleSubmit}>
-                <div class="OuterContainer">
-                    <br />
-                    <div>
-                        <label>Student Group:   </label>
-                        <input class="occupy" type="text" value={this.state.StudentGroup} onChange={this.changeStudentGroup} /> 
-                        {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
+            <div>
+                <NavBar/>
+                <form onSubmit={this.handleSubmit}>
+                    <div class="OuterContainer">
+                        <br />
+                        <div>
+                            <label>Student Group:   </label>
+                            <input class="occupy" type="text" value={this.state.StudentGroup} onChange={this.changeStudentGroup} /> 
+                            {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
+                        </div>
+                        <br />
+                        <div>
+                            <label>Event Title:   </label>
+                            <input class="occupy" type="text" value={this.state.EventTitle} onChange={this.changeEventTitle}/>
+                        </div>
+                        <br />
+                        <div>
+                            <label>Time:   </label>
+                            <input class="occupy" type="text" value={this.state.Time} onChange={this.changeTime}/>
+                        </div>
+                        <br />
+                        <div>
+                            <label>Place:   </label>
+                            <input class="occupy" type="text" value={this.state.Place} onChange={this.changePlace}/>
+                        </div>
+                        <br />
+                        <div>
+                            <label>Category:   </label>
+                            <select value={this.state.Category} onChange={this.changeCategory}>
+                                <option value="Atheltics">Athletics</option>
+                                <option value="Programming">Programming</option>
+                                <option value="Professional">Professional</option>
+                                <option value="Performance">Performance</option>
+                                <option value="Clubs">Clubs</option>
+                                <option value="Religious">Religious</option>
+                                <option value="Art">Art</option>
+                                <option value="Guest Speaker">Guest Speaker</option>
+                                <option value="Greek Life">Greek Life</option>
+                                <option value="Health">Health</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <br />
+                        <div>
+                            <label>Food Provided?   </label>
+                            <select value={this.state.Food} onChange={this.changeFood}>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <br />
+                        <div>
+                            <label>Additional Description:   </label>
+                            <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
+                        </div>
+                        <br />
+                        <button class="submitButton" type="submit">Submit</button>
+                        <br />
                     </div>
-                    <br />
-                    <div>
-                        <label>Event Title:   </label>
-                        <input class="occupy" type="text" value={this.state.EventTitle} onChange={this.changeEventTitle}/>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Time:   </label>
-                        <input class="occupy" type="text" value={this.state.Time} onChange={this.changeTime}/>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Place:   </label>
-                        <input class="occupy" type="text" value={this.state.Place} onChange={this.changePlace}/>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Category:   </label>
-                        <select value={this.state.Category} onChange={this.changeCategory}>
-                            <option value="Atheltics">Athletics</option>
-                            <option value="Programming">Programming</option>
-                            <option value="Professional">Professional</option>
-                            <option value="Performance">Performance</option>
-                            <option value="Clubs">Clubs</option>
-                            <option value="Religious">Religious</option>
-                            <option value="Art">Art</option>
-                            <option value="Guest Speaker">Guest Speaker</option>
-                            <option value="Greek Life">Greek Life</option>
-                            <option value="Health">Health</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Food Provided?   </label>
-                        <select value={this.state.Food} onChange={this.changeFood}>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                    </div>
-                    <br />
-                    <div>
-                        <label>Additional Description:   </label>
-                        <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
-                    </div>
-                    <br />
-                    <button class="submitButton" type="submit">Submit</button>
-                    <br />
-                </div>
-            </form>
+                </form>
+            </div>    
         )
     }
 }
