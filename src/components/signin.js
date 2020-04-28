@@ -6,8 +6,8 @@ class SignIn extends Component {
       super(props);
 
       this.state = {
-          email: '',
-          password: '',
+          Email: "",
+          Password: "",
       }
   }
 
@@ -15,19 +15,20 @@ class SignIn extends Component {
       return (
         <form onSubmit={this.handleSubmit}>
             <div class="OuterContainer">
+                <br />
                 <div>
                   <h1>Sign In</h1>
                 </div>
                     <br />
                     <div>
-                        <label>Dartmouth Email:   </label>
-                        <input class="occupy" type="text" value={this.state.email} onChange={this.changeEmail} /> 
+                        <label>Email:   </label>
+                        <input class="occupy" type="text" value={this.state.Email} onChange={this.changeEmail} /> 
                         {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
                     </div>
                     <br />
                     <div>
                         <label>Password:   </label>
-                        <input class="occupy" type="text" value={this.state.password} onChange={this.changePassword}/>
+                        <input class="occupy" type="text" value={this.state.Password} onChange={this.changePassword}/>
                     </div>
                     <br />
                     <Link to="/allevents">

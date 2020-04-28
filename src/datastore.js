@@ -10,3 +10,30 @@ var config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+const ourAuth = firebase.auth();
+
+export function signUp(email, password) {
+    ourAuth.createUserWithEmailAndPassword(email, password)
+        .catch(function(error) {
+            console.log('error creating user and password');
+        });
+}
+
+export function signOut() {
+    ourAuth.signOut();
+}
+
+
+export function signIn(email, password) {
+    ourAuth.signInWithEmailAndPassword(email, password)
+        .then(function() {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    consolde.log('Welcome!')
+                    console.log(user.email);
+                }
+            });
+        }
+    )
+
+}

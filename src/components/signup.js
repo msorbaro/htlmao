@@ -1,39 +1,57 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { flexibleCompare } from '@fullcalendar/core';
 
 class SignUp extends Component {
   constructor(props) {
       super(props);
 
       this.state = {
-        email: '',
-        password: '',
-        passwordTwo: '',
+        Email: "",
+        Password: "",
+        PasswordTwo: "",
       }
   }
+
+  changeEmail = (event) => {
+      this.setState({Email: event.target.value});
+  }
+        // console.log(this.state.email);
+        
+  changePassword = (event) => {
+      this.setState({Password: event.target.value});
+           // console.log(this.state.password);
+  }
+
+  changePasswordTwo = (event) => {
+    this.setState({PasswordTwo: event.target.value});
+         // console.log(this.state.PasswordTwo);
+  }
+
 
   render() {
       return (
         <form onSubmit={this.handleSubmit}>
-        <div class="OuterContainer">
+          <div class="OuterContainer">
+                <br />
                 <div>
                   <h1>Create New Account</h1>
                 </div>
                 <br />
                 <div>
-                    <label>Dartmouth Email:   </label>
-                    <input class="occupy" type="text" value={this.state.email} onChange={this.changeEmail} /> 
+                    <label>Email:   </label>
+                    <input class="occupy" type="text" value={this.state.Email} onChange={this.changeEmail} /> 
                     {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
                 </div>
                 <br />
                 <div>
                     <label>Password:   </label>
-                    <input class="occupy" type="text" value={this.state.password} onChange={this.changePasswordTwo}/>
+                    <input class="occupy" type="text" value={this.state.Password} onChange={this.changePassword}/>
                 </div>
                 <br />
                 <div>
                     <label>Re-Enter Password:   </label>
-                    <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changePassword}/>
+                    <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changePasswordTwo}/>
                 </div>
                 <br />
                 <Link to="/allevents">
