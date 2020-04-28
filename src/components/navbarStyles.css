@@ -7,7 +7,7 @@ flex-direction: column;
 
 .TheKeg {
   position: relative;
-  left: -75vh;
+  left: -77vh;
   font-size: 66px;
   font-style: normal;
   font-weight: bold;
@@ -17,7 +17,7 @@ flex-direction: column;
 
 .Whatsontap {
   position: relative;
-  left: -45.5vh;
+  left: -46.1vh;
   top: 7vh;
   font-size: 20px;
   font-style: normal;
@@ -51,7 +51,7 @@ flex-direction: column;
     position: relative;
     width: 5.5%;
     height: 5.5%;
-    left: -49vh;
+    left: -51vh;
     top: 1vh;
 }
 
@@ -65,7 +65,7 @@ flex-direction: column;
 
 .loginTheKeg {
   position: relative;
-  left: 4.4vh;
+  left: 5.5vh;
   font-size: 66px;
   font-style: normal;
   font-weight: bold;
