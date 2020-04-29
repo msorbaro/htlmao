@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './filterStyles.css';
 
 class Filter extends Component {
     constructor(props) {
@@ -77,34 +78,62 @@ class Filter extends Component {
 
     render() {
         return (
-            <div>
-                <p>I'm the filter component</p>
-                <input type="checkbox" id="athletics" name="category" onClick={this.athleticsClicked}></input>
-                <label for="athletics">Athletics</label>  
-                <input type="checkbox" id="music" name="category" onClick={this.musicClicked}></input>
-                <label for="music">Music</label> 
-                <input type="checkbox" id="dance" name="category" onClick={this.danceClicked}></input>
-                <label for="dance">Dance</label> 
-                <input type="checkbox" id="art" name="category" onClick={this.artClicked}></input>
-                <label for="art">Art</label>
-                <input type="checkbox" id="greek" name="category" onClick={this.greekClicked}></input>
-                <label for="greek">Greek Life</label> 
-                <input type="checkbox" id="programming" name="category" onClick={this.programmingClicked}></input>
-                <label for="programming">Programming</label> 
-                <input type="checkbox" id="club" name="category" onClick={this.clubClicked}></input>
-                <label for="club">Club</label> 
-                <input type="checkbox" id="speaker" name="category" onClick={this.speakerClicked}></input>
-                <label for="speaker">Guest Speaker</label> 
-                <input type="checkbox" id="health" name="category" onClick={this.healthClicked}></input>
-                <label for="health">Health</label> 
-                <input type="checkbox" id="professional" name="category" onClick={this.professionalClicked}></input>
-                <label for="professional">Professional</label> 
-                <input type="checkbox" id="religious" name="category" onClick={this.religiousClicked}></input>
-                <label for="religious">Religious</label> 
-                <input type="checkbox" id="food" name="category" onClick={this.foodClicked}></input>
-                <label for="food">Food Provided</label> 
-                <input type="checkbox" id="other" name="category" onClick={this.otherClicked}></input>
-                <label for="other">Other</label> 
+            <div className="filterContainer">
+                <legend>Filter by</legend>
+                <ul class="checkbox">
+                    <li>
+                        <input type="checkbox" id="athletics" name="category" onClick={this.athleticsClicked}></input>
+                        <label for="athletics">Athletics</label> 
+                    </li> 
+                    <li>
+                        <input type="checkbox" id="music" name="category" onClick={this.musicClicked}></input>
+                        <label for="music">Music</label>
+                    </li> 
+                    <li>
+                        <input type="checkbox" id="dance" name="category" onClick={this.danceClicked}></input>
+                        <label for="dance">Dance</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="art" name="category" onClick={this.artClicked}></input>
+                        <label for="art">Art</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="greek" name="category" onClick={this.greekClicked}></input>
+                        <label for="greek">Greek Life</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="programming" name="category" onClick={this.programmingClicked}></input>
+                        <label for="programming">Programming</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="club" name="category" onClick={this.clubClicked}></input>
+                        <label for="club">Club</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="speaker" name="category" onClick={this.speakerClicked}></input>
+                        <label for="speaker">Guest Speaker</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="health" name="category" onClick={this.healthClicked}></input>
+                        <label for="health">Health</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="professional" name="category" onClick={this.professionalClicked}></input>
+                        <label for="professional">Professional</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="religious" name="category" onClick={this.religiousClicked}></input>
+                        <label for="religious">Religious</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="food" name="category" onClick={this.foodClicked}></input>
+                        <label for="food">Food Provided</label> 
+                    </li>
+                    <li>
+                        <input type="checkbox" id="other" name="category" onClick={this.otherClicked}></input>
+                        <label for="other">Other</label> 
+                    </li>
+                </ul>            
             </div>
         );
     }

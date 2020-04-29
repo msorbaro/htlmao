@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar changeAuthenticateFalse={this.unauthenticate}/>
+          <NavBar changeAuthenticateFalse={this.unauthenticate} authenticated={this.state.authenticated}/>
           {loginOrElse}
           <div>
             <Route exact path="/allevents" component={Calendar} />
