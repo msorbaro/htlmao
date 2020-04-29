@@ -3,9 +3,14 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import NavBar from './navbar';
 
-export default class Calendar extends Component {
+class Calendar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
     render() {
+        
         return (
             <div>
                 <NavBar/>
@@ -21,8 +26,14 @@ export default class Calendar extends Component {
         )
     }
 
-    handleDateClick = (arg) => {
-        alert(arg.dateStr);
+    // handleDateClick = (arg) => {
+    //     alert(arg.dateStr);
+    // }
+
+    handleEventClick = (arg) => {
+        
     }
 
 }
+
+export default Calendar;
