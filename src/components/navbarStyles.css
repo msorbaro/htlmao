@@ -38,7 +38,18 @@ flex-direction: column;
   /* background-color: #8ABAA6; */
 }
 
+.loginNavbarlinks a {
+  float: right;
+  font-family: "Roboto";
+  font-size: 20px;
+  color: #00693E;
+  text-align: center;
+  padding: 18px 14px;
+  text-decoration: none;
+}
+
 .navbarlinks a {
+
   float: right;
   font-family: "Roboto";
   font-size: 20px;
@@ -47,6 +58,12 @@ flex-direction: column;
   padding: 18px 14px;
   text-decoration: none;
 }
+
+.loginNavbarlinks a:hover {
+  cursor: pointer;
+}
+
+
 .navbarlinks a:hover {
   background-color: #65B1FC;
 }

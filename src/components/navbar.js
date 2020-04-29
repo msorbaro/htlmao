@@ -37,7 +37,22 @@ class NavBar extends Component {
             );
         }
         else {
-
+            navbar=(
+                <div className="loginNavbarlinks">
+                    <Link to="">
+                        <a className="logout">Log Out</a>
+                    </Link>
+                    <Link to="">
+                        <a>Post an Event</a>
+                    </Link>
+                    <Link to="">
+                        <a>My Events</a>
+                    </Link>
+                    <Link to="">
+                        <a>All Events</a>
+                    </Link>
+                </div>
+                );
         }
 
         return (
@@ -57,9 +72,9 @@ class NavBar extends Component {
                         <a>All Events</a>
                     </Link>
                 </div> */}
+                
                 <header className="TheKeg">The Keg</header>
                 <h1 className="Whatsontap">What's on tap for today?</h1>
-
                 <img src={require('../images/wine.png')} alt="keg pic" className="kegpic"/>
 
             </div>  
