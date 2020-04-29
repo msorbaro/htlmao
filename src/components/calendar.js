@@ -13,7 +13,6 @@ class Calendar extends Component {
         
         return (
             <div>
-                <NavBar/>
                 <FullCalendar 
                 defaultView="dayGridWeek" 
                 plugins={[ dayGridPlugin ]}

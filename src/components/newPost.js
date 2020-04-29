@@ -167,7 +167,6 @@ class NewPost extends Component {
             //     </div>
             // </div>
             <div>
-                <NavBar/>
                 <form onSubmit={this.handleSubmit}>
                     <div class="OuterContainer">
                         <br />
