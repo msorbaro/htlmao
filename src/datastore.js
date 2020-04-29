@@ -37,3 +37,20 @@ export function signIn(email, password) {
     )
 
 }
+
+export function addNewPost(StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food) {
+    ourDB.ref('NewPost/').push({
+        StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food
+    });
+}
+
+export function removeNewPost() {
+    ourDB.ref('NewPost/' + eventID).remove();
+}
+
+export function fetchNewPost(callback) {
+    ourDB.ref('NewPost/').on('value', (snapshot) => {
+        const allEvents = snapshot.val();
+        callback(allEvents);
+    });
+}

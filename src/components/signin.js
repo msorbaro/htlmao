@@ -11,6 +11,16 @@ class SignIn extends Component {
       }
   }
 
+changeEmail = (event) => {
+    this.setState({Email: event.target.value});
+}
+      // console.log(this.state.email);
+      
+changePassword = (event) => {
+    this.setState({Password: event.target.value});
+         // console.log(this.state.password);
+}
+
   render() {
       return (
         <form onSubmit={this.handleSubmit}>
