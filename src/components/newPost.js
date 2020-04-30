@@ -104,7 +104,6 @@ class NewPost extends Component {
 
         return (
             <div>
-                <NavBar/>
                 <form onSubmit={this.handleSubmit}>
                     <div class="OuterContainer">
                         <br />

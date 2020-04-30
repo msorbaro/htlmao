@@ -1,0 +1,52 @@
+.filterContainer {
+    position: relative;
+    left: 1vw;
+
+    border-radius: 10px;
+    align-self: center;
+    color: black;
+    background-color: #C4C4C4;
+    padding: 10px;
+    font-family: "Roboto";
+    width: 12vw;
+    height: 80vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+legend {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 27px;
+    text-align: center;
+    color: #000000;
+}
+
+ul.checkbox {
+
+    text-align: left;
+    margin: 5px;
+    padding: 0px;
+    margin-left: 10px;
+    list-style: none;
+}
+
+ul.checkbox li  {
+    border: 1px transparent solid;
+    padding: 8px;
+}
+
+ul.checkbox li input {
+    margin-right: 1em;
+}
+
+ul.checkbox li label {
+    font-size: 18px;
+    line-height: 20px;
+    margin-left: 0;
+}
+
+

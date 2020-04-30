@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import NavBar from './navbar';
+import Filter from './filter';
 
 class Calendar extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Calendar extends Component {
         
         return (
             <div>
-                <NavBar/>
+                <Filter/>
                 <FullCalendar 
                 defaultView="dayGridWeek" 
                 plugins={[ dayGridPlugin ]}

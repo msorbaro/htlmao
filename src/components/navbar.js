@@ -7,16 +7,60 @@ class NavBar extends Component {
         super(props);
 
         this.state = {
-            //no state
         }
     }
 
+    signout = () => {
+        this.props.changeAuthenticateFalse();
+        console.log("you clicked log out, navbar.signout called")
+    }
+
     renderNav() {
+    
+        var navbar = null;
+        if (this.props.authenticated) {
+            navbar=(
+            <div className="navbarlinks">
+                <Link to="">
+                    <a className="logout" onClick={this.signout}>Log Out</a>
+                </Link>
+                <Link to="/postevent">
+                    <a>Post an Event</a>
+                </Link>
+                <Link to="/myevents">
+                    <a>My Events</a>
+                </Link>
+                <Link to="/allevents">
+                    <a>All Events</a>
+                </Link>
+            </div>
+            );
+        }
+        else {
+            navbar=(
+                <div className="loginNavbarlinks">
+                    <Link to="">
+                        <a className="logout">Log Out</a>
+                    </Link>
+                    <Link to="">
+                        <a>Post an Event</a>
+                    </Link>
+                    <Link to="">
+                        <a>My Events</a>
+                    </Link>
+                    <Link to="">
+                        <a>All Events</a>
+                    </Link>
+                </div>
+                );
+        }
+
         return (
             <div className="navbar">
-                <div className="navbarlinks">
-                    <Link to="/login">
-                        <a className="logout">Log Out</a>
+                {navbar}
+                {/* <div className="navbarlinks">
+                    <Link to="">
+                        <a className="logout" onClick={this.signout}>Log Out</a>
                     </Link>
                     <Link to="/postevent">
                         <a>Post an Event</a>
@@ -27,11 +71,10 @@ class NavBar extends Component {
                     <Link to="/allevents">
                         <a>All Events</a>
                     </Link>
-                </div>
-
+                </div> */}
+                
                 <header className="TheKeg">The Keg</header>
                 <h1 className="Whatsontap">What's on tap for today?</h1>
-
                 <img src={require('../images/wine.png')} alt="keg pic" className="kegpic"/>
 
             </div>  
@@ -48,3 +91,6 @@ class NavBar extends Component {
 }
 
 export default NavBar;
+
+
+

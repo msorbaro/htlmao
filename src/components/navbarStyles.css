@@ -7,7 +7,7 @@ flex-direction: column;
 
 .TheKeg {
   position: relative;
-  left: -77vh;
+  left: -35vw;
   font-size: 66px;
   font-style: normal;
   font-weight: bold;
@@ -17,7 +17,7 @@ flex-direction: column;
 
 .Whatsontap {
   position: relative;
-  left: -46.1vh;
+  left: -21vw;
   top: 7vh;
   font-size: 20px;
   font-style: normal;
@@ -34,15 +34,36 @@ flex-direction: column;
   display: flex;
 }
 
-.navbarlinks a {
+.logout {
+  /* background-color: #8ABAA6; */
+}
+
+.loginNavbarlinks a {
   float: right;
-  font-family: Roboto;
+  font-family: "Roboto";
+  font-size: 20px;
+  color: #00693E;
+  text-align: center;
+  padding: 18px 14px;
+  text-decoration: none;
+}
+
+.navbarlinks a {
+
+  float: right;
+  font-family: "Roboto";
   font-size: 20px;
   color: white;
   text-align: center;
   padding: 18px 14px;
   text-decoration: none;
 }
+
+.loginNavbarlinks a:hover {
+  cursor: pointer;
+}
+
+
 .navbarlinks a:hover {
   background-color: #65B1FC;
 }
@@ -54,42 +75,3 @@ flex-direction: column;
     left: -51vh;
     top: 1vh;
 }
-
-.loginnavbar {
-  overflow: hidden;
-  background-color: #00693E;
-  min-height: 14vh;
-  flex-direction: row;
-  display: flex;
-}
-
-.loginTheKeg {
-  position: relative;
-  left: 5.5vh;
-  font-size: 66px;
-  font-style: normal;
-  font-weight: bold;
-  font-family: Roboto;
-  color: #FFFFFF;
-}
-
-.loginWhatsontap {
-  position: relative;
-  left: -29.35vh;
-  top: 7.5vh;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: normal;
-  font-family: Roboto;
-  color: #FFFFFF;
-}
-
-.loginkegpic {
-  position: relative;
-  width: 5.5%;
-  height: 5.5%;
-  left: 2vh;
-  top: 1vh;
-}
-  
-  
