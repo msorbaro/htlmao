@@ -6,6 +6,8 @@ import Event from './event';
 import { Map } from 'immutable';
 import { DayBgRow } from '@fullcalendar/daygrid';
 import * as db from '../datastore.js';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 
 class NewPost extends Component {
@@ -158,7 +160,9 @@ class NewPost extends Component {
                             <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
                         </div>
                         <br />
-                        <button class="submitButton" type="submit">Submit</button>
+                        <Link to="/allevents">
+                            <button class="submitButton" type="submit">Submit</button>
+                        </Link>
                         <br />
                     </div>
                 </form>

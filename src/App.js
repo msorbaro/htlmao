@@ -51,7 +51,7 @@ class App extends Component {
     return (
         
       <Router>
-        <NewPost />
+        
         <div className="App">
           <NavBar changeAuthenticateFalse={this.unauthenticate} authenticated={this.state.authenticated}/>
           {loginOrElse}
