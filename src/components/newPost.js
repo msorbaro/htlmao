@@ -104,7 +104,7 @@ class NewPost extends Component {
 
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.saveEventInfo}>
                     <div class="OuterContainer">
                         <br />
                         <div>
