@@ -4,13 +4,16 @@ import '../newPostStyles.css';
 import NavBar from './navbar';
 import Event from './event';
 import { Map } from 'immutable';
+import { DayBgRow } from '@fullcalendar/daygrid';
+import * as db from '../datastore.js';
+
 
 class NewPost extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            events: Map(), 
+            events: null,
             eventID: 0, 
             StudentGroup:"",
             EventTitle:"",
@@ -18,14 +21,16 @@ class NewPost extends Component {
             Place:"",
             AdditionalDescription:"",
             Category:"Athletics",
-            Food:"No"
+            Food:"No",
         };
     }
+    
+    componentDidMount(){
+        db.fetchNewPost(this.fetchedNewPosts);
+    }
 
-    // How to delete everything
-    // Every new event or post should have an id passed to it as a prop
-    delete = (id) => {
-        this.setState({events: this.state.events.delete(id)})
+    fetchedNewPosts= (allEvents) =>{
+        this.setState({events: allEvents});
     }
 
     changeStudentGroup = (event) => {
@@ -56,116 +61,48 @@ class NewPost extends Component {
         this.setState({Food: event.target.value});
         // console.log(this.state.Food);
     }
-    // handleSubmit = (event) => {
-    //     var eventData = {
-    //         studentGoup: this.state.StudentGroup,
-    //         eventTitle: this.state.EventTitle,
-    //         time: this.state.Time,
-    //         place: this.state.Place,
-    //         additionalDescription: this.state.AdditionalDescription,
-    //         category: this.state.Category,
-    //         food: this.state.Food
-    //       }
 
-    //     this.setState({
-    //         events: this.state.events.set(this.state.eventID, eventData),
-    //         eventID: this.state.eventID +1,
-    //         // StudentGroup:"",
-    //         // EventTitle:"",
-    //         // Time:"",
-    //         // Place:"",
-    //         // AdditionalDescription:"",
-    //         // Category:"Athletics",
-    //         // Food:"No"
-    //     })
+    delete = (eventID) => {
+        // this.setState({dogs: this.state.dogs.delete(id)})
+        db.removeNewPost(eventID);
+        db.fetchNewPost(this.fetchedNewPosts);
+    }
 
-    //     // Submitted my shit
-    //     // console.log(this.state.StudentGroup);
-    //     // console.log(this.state.Category);
-    //     // console.log(this.state.AdditionalDescription);
-    //     // alert(this.state.StudentGroup +" "+ this.state.Category +" "+ this.state.AdditionalDescription);
-    //     // event.preventDefault()
-    //     // The above line prevents shit from resreshing and being set to null or default value
-    // }
-
-    // This looks dumb as hell right now
-    // I will try to add some functionality
-    // All the informatio that is passed in is saved in the state and should be displayed using that
+    saveEventInfo = () => {
+        db.addNewPost(this.state.StudentGroup, this.state.EventTitle, this.state.Time, this.state.Place, this.state.AdditionalDescription, this.state.Category, this.state.Food);
+        this.setState({
+            StudentGroup:"",
+            EventTitle:"",
+            Time:"",
+            Place:"",
+            AdditionalDescription:"",
+            Category:"Athletics",
+            Food:"No"
+        });
+        db.fetchNewPost(this.fetchedNewPosts);
+    }
 
     render() {
-        // let allEvents = null;
-        // if(this.state.events != null) {
-        //   allEvents = Object.keys(this.state.events).map((id) => {
-        //     const info = this.state.events[id];
-        //     return <Event 
-        //       save={this.save} 
-        //       delete={this.delete} 
-        //       studentGroup={info.StudentGroup} 
-        //       eventTitle={info.EventTitle} 
-        //       time={info.Time} 
-        //       place={info.Place} 
-        //       additionalDescription={info.AdditionalDescription}
-        //       category={info.Category}
-        //       food={info.Food}
-        //       id={id} />
-        //   })
-        // }
-
-        const allEvents = this.state.events.entrySeq().map(
-            ([id, event]) => {
+        let allEvents = null; // maybe try this with let
+        if(this.state.events != null) {
+            // alert("events is not null");
+          allEvents = Object.keys(this.state.events).map((id) => {
+            const info = this.state.events[id];
             return <Event 
-            //   save={this.save} 
-            //   delete={this.delete} 
-              studentGroup={event.StudentGroup} 
-              eventTitle={event.EventTitle} 
-              time={event.Time} 
-              place={event.Place} 
-              additionalDescription={event.AdditionalDescription}
-              category={event.Category}
-              food={event.Food}
+              save={this.save} 
+              delete={this.delete} 
+              studentGroup={info.StudentGroup} 
+              eventTitle={info.EventTitle} 
+              time={info.Time} 
+              place={info.Place} 
+              additionalDescription={info.AdditionalDescription}
+              category={info.Category}
+              food={info.Food}
               id={id} />
-            })
-            console.log(this.state.events)
+          })
+        }
 
         return (
-            // <div>
-            //     <p>I'm the component for a new post!</p>
-            //     <div class="OuterContainer">
-            //         <div class="StudentGroup pairs">
-            //             <p>Student Group</p>
-            //             <input type="text" value={this.state.StudentGroup} onChange={this.changeStudentGroup}/>
-            //         </div>
-            //         <div class="EventTitle pairs">
-            //             <h3>Event Title</h3>
-            //             <input type="text pairs" value={this.state.EventTitle} onChange={this.changeEventTitle}/>
-            //         </div>
-            //         <div class="Time pairs">
-            //             <h3>Time</h3>
-            //             <input type="text" value={this.state.Time} onChange={this.changeTime}/>
-            //         </div>
-            //         <div class="Place pairs">
-            //             <h3>Place</h3>
-            //             <input type="text" value={this.state.Place} onChange={this.changePlace}/>
-            //         </div>
-            //         <div class="Category">
-            //             <input type="checkbox" /> <p>Athletics</p>
-            //             <input type="checkbox" /> <p>Programming</p>
-            //             <input type="checkbox" /> <p>Professional</p>
-            //         </div>
-            //         <div class="FoodProvided">
-            //             <p>Food Provided?</p>
-            //             <input type="checkbox" /> <p>Yes</p>
-            //             <input type="checkbox" /> <p>No</p>
-            //         </div>
-            //         <div class="AdditionalDescription">
-            //             <p>Additional Description?</p>
-            //             <textarea type="text" rows="20" cols="80"/>
-            //         </div>
-            //         <div>
-            //             <button>Submit</button>
-            //         </div>
-            //     </div>
-            // </div>
             <div>
                 <NavBar/>
                 <form onSubmit={this.handleSubmit}>
@@ -226,9 +163,12 @@ class NewPost extends Component {
                         <br />
                     </div>
                 </form>
+                {allEvents}
             </div>    
         )
     }
 }
 
 export default NewPost;
+
+// Add the routing to the calender on submitting the event

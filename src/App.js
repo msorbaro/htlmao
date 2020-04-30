@@ -29,7 +29,9 @@ class App extends Component {
     
 
     return (
+        
       <Router>
+        <NewPost />
         <div className="App">
           <div>
             <Route exact path="/allevents" component={Calendar} />
