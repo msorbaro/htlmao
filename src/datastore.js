@@ -1,13 +1,5 @@
 import firebase from 'firebase';
 
-// var config = {
-//     apiKey: "AIzaSyDiWha5-dhsrCrLSR3R0Aqctv9iyGp9eEg",
-//     authDomain: "dalicalendar-936c1.firebaseapp.com",
-//     databaseURL: "https://dalicalendar-936c1.firebaseio.com",
-//     projectId: "dalicalendar-936c1",
-//     storageBucket: "dalicalendar-936c1.appspot.com"
-// };
-
 const config = {
     apiKey: "AIzaSyDiWha5-dhsrCrLSR3R0Aqctv9iyGp9eEg",
     authDomain: "dalicalendar-936c1.firebaseapp.com",
@@ -50,9 +42,9 @@ export function signIn(email, password) {
 
 }
 
-export function addNewPost(StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food) {
+export function addNewPost(StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food, Date) {
     ourDB.ref('NewPost/').push({
-        StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food
+        StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food, Date
     });
 }
 

@@ -24,6 +24,7 @@ class NewPost extends Component {
             AdditionalDescription:"",
             Category:"Athletics",
             Food:"No",
+            Date:""
         };
     }
     
@@ -51,6 +52,10 @@ class NewPost extends Component {
         this.setState({Place: event.target.value});
         // console.log(this.state.Place);
     }
+    changeDate = (event) => {
+        this.setState({Date: event.target.value});
+        // console.log(this.state.Place);
+    }
     changeAdditionalDescription = (event) => {
         this.setState({AdditionalDescription: event.target.value});
         // console.log(this.state.AdditionalDescription);
@@ -71,7 +76,7 @@ class NewPost extends Component {
     }
 
     saveEventInfo = () => {
-        db.addNewPost(this.state.StudentGroup, this.state.EventTitle, this.state.Time, this.state.Place, this.state.AdditionalDescription, this.state.Category, this.state.Food);
+        db.addNewPost(this.state.StudentGroup, this.state.EventTitle, this.state.Time, this.state.Place, this.state.AdditionalDescription, this.state.Category, this.state.Food, this.state.Date);
         this.setState({
             StudentGroup:"",
             EventTitle:"",
@@ -79,15 +84,16 @@ class NewPost extends Component {
             Place:"",
             AdditionalDescription:"",
             Category:"Athletics",
-            Food:"No"
+            Food:"No",
+            Date:""
         });
         db.fetchNewPost(this.fetchedNewPosts);
+        this.props.history.push('/allevents');
     }
 
     render() {
-        let allEvents = null; // maybe try this with let
+        let allEvents = null;
         if(this.state.events != null) {
-            // alert("events is not null");
           allEvents = Object.keys(this.state.events).map((id) => {
             const info = this.state.events[id];
             return <Event 
@@ -100,6 +106,7 @@ class NewPost extends Component {
               additionalDescription={info.AdditionalDescription}
               category={info.Category}
               food={info.Food}
+              date={info.Date}
               id={id} />
           })
         }
@@ -159,10 +166,14 @@ class NewPost extends Component {
                             <label>Additional Description:   </label>
                             <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
                         </div>
+                        <div>
+                            <label>Date:   </label>
+                            <input type="text" value={this.state.Date} onChange={this.changeDate} />
+                        </div>
                         <br />
-                        <Link to="/allevents">
+                        {/* <Link to="/allevents"> */}
                             <button class="submitButton" type="submit">Submit</button>
-                        </Link>
+                        {/* </Link> */}
                         <br />
                     </div>
                 </form>
@@ -173,5 +184,3 @@ class NewPost extends Component {
 }
 
 export default NewPost;
-
-// Add the routing to the calender on submitting the event

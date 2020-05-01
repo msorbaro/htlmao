@@ -11,6 +11,7 @@ class Event extends Component {
     this.props.delete(this.props.id)
 }
 
+
 //   handleSubmit = () => {
 //     var eventData = {
 //         studentGoup: this.state.StudentGroup,
@@ -36,6 +37,7 @@ class Event extends Component {
 //         // Food:"No"
 //     })
 // }
+
 
     render() {
         return (
