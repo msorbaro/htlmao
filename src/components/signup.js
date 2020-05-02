@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { flexibleCompare } from '@fullcalendar/core';
+import './login.css';
 
 class SignUp extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class SignUp extends Component {
   render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <div class="OuterContainer">
+          <div class="LoginContainer">
                 <br />
                 <div>
                   <h1>Create New Account</h1>

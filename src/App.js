@@ -39,8 +39,11 @@ class App extends Component {
             <div className="bluebox">
               <p className="pageTitle">Welcome Back</p>
             </div>
-            <SignIn changeAuthenticateTrue={this.authenticate}/>
-            <SignUp changeAuthenticateTrue={this.authenticate}/>
+        
+          <div class = "LoginWrapper">
+            <div class = "SignIn"><SignIn changeAuthenticateTrue={this.authenticate}/></div>
+            <div class = "SignUp"><SignUp changeAuthenticateTrue={this.authenticate}/></div>
+          </div>
           </div>
         )
       }

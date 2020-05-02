@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import './login.css';
 
 class SignIn extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ signin = () => {
   render() {
       return (
         <form onSubmit={this.handleSubmit}>
-            <div class="OuterContainer">
+            <div class="LoginContainer">
                 <br />
                 <div>
                   <h1>Sign In</h1>

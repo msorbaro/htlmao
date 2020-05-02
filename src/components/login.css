@@ -1,0 +1,64 @@
+.pairs{
+    display: flex;
+    flex-direction: row;
+}
+
+.LoginContainer{
+    border-radius: 50px;
+    align-self: center;
+    text-align: center;
+    color: black;
+    background-color: #EBEBEB;
+    font-family: Open Sans;
+    width: 48vw;
+    height: 75vh;
+    margin: 1vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.LoginWrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 75vh;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.SignIn {
+    float: left;
+}
+
+.SignUp {
+    float: left;
+}
+
+.occupy{
+    width: 30vw;
+    height: 3vh;
+    vertical-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+label{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 55px;
+    text-align: center;
+}
+
+.submitButton{
+    background: #00693E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    color: white;
+    font-family: Open Sans;
+}
