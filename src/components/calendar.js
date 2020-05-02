@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import NavBar from './navbar';
 import Filter from './filter';
 import * as db from '../datastore.js';
 import Event from './event';
+import '../App.css'
 
 class Calendar extends Component {
     constructor(props) {
         super(props);
         this.state = {events: null};
+
     }
 
     componentDidMount(){
@@ -62,8 +63,19 @@ class Calendar extends Component {
               })
         }
 
+        var pageName = null;
+        // if (this.router.url==='/allevents') {
+        //     pageName = <p className="pageTitle">All Events</p>
+        // }
+        // else {
+        //     pageName = <p className="pageTitle">My Events</p>
+        // }
+
         return (
             <div>
+                <div className="bluebox">
+                    {pageName}
+                </div>
                 <Filter/>
                 <FullCalendar 
                 defaultView="dayGridWeek" 

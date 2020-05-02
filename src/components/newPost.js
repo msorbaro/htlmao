@@ -7,6 +7,7 @@ import { Map } from 'immutable';
 import { DayBgRow } from '@fullcalendar/daygrid';
 import * as db from '../datastore.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import '../App.css';
 
 
 
@@ -113,6 +114,9 @@ class NewPost extends Component {
 
         return (
             <div>
+                <div className="bluebox">
+                    <p className="pageTitle">Post an Event</p>
+                </div>
                 <form onSubmit={this.saveEventInfo}>
                     <div class="OuterContainer">
                         <br />

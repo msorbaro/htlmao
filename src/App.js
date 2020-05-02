@@ -36,6 +36,9 @@ class App extends Component {
         console.log("if triggered")
         loginOrElse=(
           <div>
+            <div className="bluebox">
+              <p className="pageTitle">Welcome Back</p>
+            </div>
             <SignIn changeAuthenticateTrue={this.authenticate}/>
             <SignUp changeAuthenticateTrue={this.authenticate}/>
           </div>
@@ -43,7 +46,7 @@ class App extends Component {
       }
       else {
         console.log("else triggered")
-        loginOrElse=<p>You are logged in!</p>
+        // loginOrElse=<p>You are logged in!</p>
       }
 
     
