@@ -8,16 +8,22 @@ import NavBar from './components/navbar';
 import Login from './components/login';
 import SignIn from './components/signin';
 import SignUp from './components/signup';
+import firebase from 'firebase';
+import * as db from '../datastore.js';
+//can import firebase and then don't need to do export files
 
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state={authenticated: false}
+    this.user = db.signIn();
   }
-
+/*
+  //get rid of state variables
   unauthenticate = () => {
     this.setState({authenticated: false})
+    // set based to firebase auth state thing
     console.log("you called App.js unauthenticate")
     console.log("value of app.js authenticated: "+this.state.authenticated)
   }
@@ -26,13 +32,13 @@ class App extends Component {
     this.setState({authenticated: true})
     console.log("you called App.js authenticate")
     console.log("value of app.js authenticated: "+this.state.authenticated)
-  }
+  } */
 
   render() {
 
     var loginOrElse = null;
-
-      if (!this.state.authenticated) {
+        if(firebase.auth().onAuthStateChanged((this.user))) {
+      //if (!this.state.authenticated) { // get user from on auth state change and do if statement based on that
         console.log("if triggered")
         loginOrElse=(
           <div>

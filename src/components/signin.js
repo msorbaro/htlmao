@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './login.css';
+import { DayBgRow } from '@fullcalendar/daygrid';
+import * as db from '../datastore.js';
 
 class SignIn extends Component {
   constructor(props) {
@@ -23,7 +25,8 @@ changePassword = (event) => {
 }
 
 signin = () => {
-    this.props.changeAuthenticateTrue();
+    // this.props.changeAuthenticateTrue();
+    db.signIn(this.state.Email, this.state.Password);
 }
 
   render() {

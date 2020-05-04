@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { flexibleCompare } from '@fullcalendar/core';
 import './login.css';
+import * as db from '../datastore.js';
 
 class SignUp extends Component {
   constructor(props) {
@@ -30,7 +31,9 @@ class SignUp extends Component {
   }
 
   signup = () => {
-    this.props.changeAuthenticateTrue();
+    if (this.state.Password == this.state.PasswordTwo){
+      db.signUp(this.state.Email, this.state.Password)}
+    // this.props.changeAuthenticateTrue();
   }
 
   render() {
