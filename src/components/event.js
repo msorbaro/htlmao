@@ -43,7 +43,8 @@ class Event extends Component {
         return (
             <div>
                 <p>Group: {this.props.studentGroup}</p>
-                <p>Date: {this.props.eventTitle}</p>
+                <p>Title: {this.props.eventTitle}</p>
+                <p>Date: {this.props.date}</p>
                 <p>Time: {this.props.time}</p>
                 <p>Place: {this.props.place}</p>
                 <p>{this.props.additionalDescription}</p>
