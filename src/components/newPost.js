@@ -8,7 +8,8 @@ import { DayBgRow } from '@fullcalendar/daygrid';
 import * as db from '../datastore.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
-
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 class NewPost extends Component {
@@ -25,7 +26,7 @@ class NewPost extends Component {
             AdditionalDescription:"",
             Category:"Athletics",
             Food:"No",
-            Date:""
+            Date: new Date()
         };
     }
     
@@ -53,10 +54,10 @@ class NewPost extends Component {
         this.setState({Place: event.target.value});
         // console.log(this.state.Place);
     }
-    changeDate = (event) => {
-        this.setState({Date: event.target.value});
-        // console.log(this.state.Place);
-    }
+    // changeDate = (event) => {
+    //     this.setState({Date: event.target.value});
+    //     // console.log(this.state.Place);
+    // }
     changeAdditionalDescription = (event) => {
         this.setState({AdditionalDescription: event.target.value});
         // console.log(this.state.AdditionalDescription);
@@ -86,11 +87,17 @@ class NewPost extends Component {
             AdditionalDescription:"",
             Category:"Athletics",
             Food:"No",
-            Date:""
+            Date: new Date()
         });
         db.fetchNewPost(this.fetchedNewPosts);
         this.props.history.push('/allevents');
     }
+
+    handleChange = date => {
+        this.setState({
+          Date: date
+        });
+      };
 
     render() {
         let allEvents = null;
@@ -170,9 +177,16 @@ class NewPost extends Component {
                             <label>Additional Description:   </label>
                             <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
                         </div>
-                        <div>
+                        {/* <div>
                             <label>Date:   </label>
                             <input type="text" value={this.state.Date} onChange={this.changeDate} />
+                        </div> */}
+                        <div>
+                            <DatePicker
+                                selected={this.state.Date}
+                                onChange={this.handleChange}
+                                dateFormat='yyyy/MM/dd'	
+                            />
                         </div>
                         <br />
                         {/* <Link to="/allevents"> */}
