@@ -27,6 +27,7 @@ flex-direction: column;
 }
 
 .navbar {
+  
   overflow: hidden;
   background-color: #00693E;
   min-height: 14vh;

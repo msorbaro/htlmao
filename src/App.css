@@ -31,6 +31,16 @@
   align-items: center;
   display: row;
 }
+
+.pageTitle {
+  font-size: 28px;;
+}
+
+.bluebox {
+  overflow: hidden;
+  background-color: #A3D4FF; 
+  min-height: 14vh;
+}
 /* 
 .App-link {
   color: #61dafb;

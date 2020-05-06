@@ -24,7 +24,9 @@ export function signUp(email, password) {
 }
 
 export function signOut() {
-    ourAuth.signOut();
+    ourAuth.signOut().catch(function(error) {
+        console.log('error creating user and password');
+    });
 }
 
 
