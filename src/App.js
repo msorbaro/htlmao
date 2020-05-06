@@ -9,7 +9,7 @@ import Login from './components/login';
 import SignIn from './components/signin';
 import SignUp from './components/signup';
 import firebase from 'firebase';
-import * as db from '../datastore.js';
+import * as db from './datastore.js';
 //can import firebase and then don't need to do export files
 
 
@@ -36,27 +36,27 @@ class App extends Component {
 
   render() {
 
-    var loginOrElse = null;
-        if(firebase.auth().onAuthStateChanged((this.user))) {
-      //if (!this.state.authenticated) { // get user from on auth state change and do if statement based on that
-        console.log("if triggered")
-        loginOrElse=(
-          <div>
-            <div className="bluebox">
-              <p className="pageTitle">Welcome Back</p>
-            </div>
+    // var loginOrElse = null;
+    //     if(firebase.auth().onAuthStateChanged((this.user))) {
+    //   //if (!this.state.authenticated) { // get user from on auth state change and do if statement based on that
+    //     console.log("if triggered")
+    //     loginOrElse=(
+    //       <div>
+    //         <div className="bluebox">
+    //           <p className="pageTitle">Welcome Back</p>
+    //         </div>
         
-          <div class = "LoginWrapper">
-            <div class = "SignIn"><SignIn changeAuthenticateTrue={this.authenticate}/></div>
-            <div class = "SignUp"><SignUp changeAuthenticateTrue={this.authenticate}/></div>
-          </div>
-          </div>
-        )
-      }
-      else {
-        console.log("else triggered")
-        // loginOrElse=<p>You are logged in!</p>
-      }
+    //       <div class = "LoginWrapper">
+    //         <div class = "SignIn"><SignIn changeAuthenticateTrue={this.authenticate}/></div>
+    //         <div class = "SignUp"><SignUp changeAuthenticateTrue={this.authenticate}/></div>
+    //       </div>
+    //       </div>
+    //     )
+    //   }
+    //   else {
+    //     console.log("else triggered")
+    //     // loginOrElse=<p>You are logged in!</p>
+    //   }
 
     
 
@@ -65,9 +65,10 @@ class App extends Component {
       <Router>
         
         <div className="App">
-          <NavBar changeAuthenticateFalse={this.unauthenticate} authenticated={this.state.authenticated}/>
-          {loginOrElse}
+          <NavBar/>
+          {/* {loginOrElse} */}
           <div>
+            <Route exact path="/" component={Login} />
             <Route exact path="/allevents" component={Calendar} />
             <Route exact path="/myevents" component={Calendar} />
             <Route exact path="/postevent" component={NewPost} />

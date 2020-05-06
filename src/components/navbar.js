@@ -1,27 +1,43 @@
 import React, { Component } from 'react';
 import './navbarStyles.css'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import firebase from 'firebase';
 
 class NavBar extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            authenticated: false
         }
     }
 
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.setState({ authenticated: true });
+          }
+        });
+      }    
+
     signout = () => {
-        this.props.changeAuthenticateFalse();
-        console.log("you clicked log out, navbar.signout called")
+        // this.props.changeAuthenticateFalse();
+        // console.log("you clicked log out, navbar.signout called")
+        firebase.auth().signOut().then(() => {
+            console.log('logged out');
+          }).catch((error) => {
+            console.log('wait, could not sign out');
+          });
+          this.setState({ authenticated: false });
     }
 
     renderNav() {
-    
+        
         var navbar = null;
-        if (this.props.authenticated) {
+        if (this.state.authenticated) {
             navbar=(
             <div className="navbarlinks">
-                <Link to="">
+                <Link to="/">
                     <a className="logout" onClick={this.signout}>Log Out</a>
                 </Link>
                 <Link to="/postevent">

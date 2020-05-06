@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './login.css';
 import { DayBgRow } from '@fullcalendar/daygrid';
 import * as db from '../datastore.js';
+import firebase from 'firebase';
 
 class SignIn extends Component {
   constructor(props) {
@@ -24,14 +25,25 @@ changePassword = (event) => {
          // console.log(this.state.password);
 }
 
-signin = () => {
-    // this.props.changeAuthenticateTrue();
-    db.signIn(this.state.Email, this.state.Password);
-}
+// signIn = () => {
+//     // this.props.changeAuthenticateTrue();
+//     db.signIn(this.state.Email, this.state.Password);
+// }
+
+signIn = (event) => {
+    firebase.auth().signInWithEmailAndPassword(this.state.Email, this.state.Password).catch((error) => {
+      alert(error);
+    });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.props.history.push('/allevents');
+      }
+    });
+  }
 
   render() {
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.signIn}>
             <div class="LoginContainer">
                 <br />
                 <div>
@@ -50,7 +62,7 @@ signin = () => {
                     </div>
                     <br />
                     <Link to="/allevents">
-                        <button class="submitButton" type="submit" onClick={this.signin}>Login</button>
+                        <button class="submitButton" type="submit">Login</button>
                     </Link>
                     <br />
                 </div>

@@ -3,42 +3,65 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { flexibleCompare } from '@fullcalendar/core';
 import './login.css';
 import * as db from '../datastore.js';
+import firebase from 'firebase';
 
 class SignUp extends Component {
   constructor(props) {
       super(props);
 
       this.state = {
-        Email: "",
-        Password: "",
-        PasswordTwo: "",
+        email: "",
+        password: "",
+        passwordTwo: "",
       }
   }
 
-  changeEmail = (event) => {
-      this.setState({Email: event.target.value});
+  changeemail = (event) => {
+      this.setState({email: event.target.value});
   }
         // console.log(this.state.email);
         
-  changePassword = (event) => {
-      this.setState({Password: event.target.value});
+  changepassword = (event) => {
+      this.setState({password: event.target.value});
            // console.log(this.state.password);
   }
 
-  changePasswordTwo = (event) => {
-    this.setState({PasswordTwo: event.target.value});
-         // console.log(this.state.PasswordTwo);
+  changepasswordTwo = (event) => {
+    this.setState({passwordTwo: event.target.value});
+         // console.log(this.state.passwordTwo);
   }
 
-  signup = () => {
-    if (this.state.Password == this.state.PasswordTwo){
-      db.signUp(this.state.Email, this.state.Password)}
-    // this.props.changeAuthenticateTrue();
+  // signup = () => {
+  //   if (this.state.password == this.state.passwordTwo){
+  //     db.signUp(this.state.email, this.state.password)}
+  //   // this.props.changeAuthenticateTrue();
+  // }
+
+  signup = (event) => {
+    if ((this.state.email.endsWith('@dartmouth.edu') || this.state.email.endsWith('@Dartmouth.edu')) && this.state.password === this.state.passwordTwo) {
+      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch((error) => {
+        alert(error);
+      });
+
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          firebase.database().ref(`users/${user.uid}`).set({
+            email: this.state.email,
+          });
+          console.log('pushing history');
+          this.props.history.push('/allevents');
+        }
+      });
+    } else if (!this.state.email.endsWith('@dartmouth.edu')) {
+      alert('Please enter a dartmouth.edu email');
+    } else {
+      alert('Make sure passwords match');
+    }
   }
 
   render() {
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.signup}>
           <div class="LoginContainer">
                 <br />
                 <div>
@@ -46,23 +69,23 @@ class SignUp extends Component {
                 </div>
                 <br />
                 <div>
-                    <label>Email:   </label>
-                    <input class="occupy" type="text" value={this.state.Email} onChange={this.changeEmail} /> 
+                    <label>email:   </label>
+                    <input class="occupy" type="text" value={this.state.email} onChange={this.changeemail} /> 
                     {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
                 </div>
                 <br />
                 <div>
-                    <label>Password:   </label>
-                    <input class="occupy" type="text" value={this.state.Password} onChange={this.changePassword}/>
+                    <label>password:   </label>
+                    <input class="occupy" type="text" value={this.state.password} onChange={this.changepassword}/>
                 </div>
                 <br />
                 <div>
-                    <label>Re-Enter Password:   </label>
-                    <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changePasswordTwo}/>
+                    <label>Re-Enter password:   </label>
+                    <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changepasswordTwo}/>
                 </div>
                 <br />
                 <Link to="/allevents">
-                    <button class="submitButton" type="submit" onClick={this.signup}>Create Account</button>
+                    <button class="submitButton" type="submit">Create Account</button>
                 </Link>
                 <br />
             </div>
@@ -94,15 +117,15 @@ export default SignUp;
 //     };
 //   }
 
-//   onEmailChange = (event) => {
+//   onemailChange = (event) => {
 //     this.setState({ email: event.target.value });
 //   }
 
-//   onPasswordChange= (event) => {
+//   onpasswordChange= (event) => {
 //     this.setState({ password: event.target.value });
 //   }
 
-//   onPasswordTwoChange= (event) => {
+//   onpasswordTwoChange= (event) => {
 //     this.setState({ passwordTwo: event.target.value });
 //   }
 
@@ -117,7 +140,7 @@ export default SignUp;
 
 //   handleSignupButtonClick = (event) => {
 //     if ((this.state.email.endsWith('@dartmouth.edu') || this.state.email.endsWith('@Dartmouth.edu')) && this.state.password === this.state.passwordTwo) {
-//       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch((error) => {
+//       firebase.auth().createUserWithemailAndpassword(this.state.email, this.state.password).catch((error) => {
 //         alert(error);
 //       });
 
@@ -151,15 +174,15 @@ export default SignUp;
 //         <div className="displaySignInInfo">
 //           <div className="leftJustify">
 //             <div className="prompt"> Enter your Dartmouth email: </div>
-//             <Input className="response" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+//             <Input className="response" placeholder="Dartmouth email" onChange={this.onemailChange} value={this.state.email} />
 //             <div className="prompt"> Enter your first name: </div>
 //             <Input className="response" placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
 //             <div className="prompt"> Enter your last name: </div>
 //             <Input className="response" placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
 //             <div className="prompt"> Enter a password: </div>
-//             <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+//             <Input type="password" className="response" id="passwordInput" placeholder="password" onChange={this.onpasswordChange} value={this.state.password} />
 //             <div className="prompt"> Confirm password: </div>
-//             <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
+//             <Input type="password" className="response" id="passwordInput" placeholder="password" onChange={this.onpasswordTwoChange} value={this.state.passwordTwo} />
 
 //           </div>
 //           <div>
@@ -191,25 +214,25 @@ export default SignUp;
 //       super(props);
 
 //       this.state = {
-//         Email: "",
-//         Password: "",
-//         PasswordTwo: "",
+//         email: "",
+//         password: "",
+//         passwordTwo: "",
 //       }
 //   }
 
-//   changeEmail = (event) => {
-//       this.setState({Email: event.target.value});
+//   changeemail = (event) => {
+//       this.setState({email: event.target.value});
 //   }
 //         // console.log(this.state.email);
         
-//   changePassword = (event) => {
-//       this.setState({Password: event.target.value});
+//   changepassword = (event) => {
+//       this.setState({password: event.target.value});
 //            // console.log(this.state.password);
 //   }
 
-//   changePasswordTwo = (event) => {
-//     this.setState({PasswordTwo: event.target.value});
-//          // console.log(this.state.PasswordTwo);
+//   changepasswordTwo = (event) => {
+//     this.setState({passwordTwo: event.target.value});
+//          // console.log(this.state.passwordTwo);
 //   }
 
 
@@ -223,19 +246,19 @@ export default SignUp;
 //                 </div>
 //                 <br />
 //                 <div>
-//                     <label>Email:   </label>
-//                     <input class="occupy" type="text" value={this.state.Email} onChange={this.changeEmail} /> 
+//                     <label>email:   </label>
+//                     <input class="occupy" type="text" value={this.state.email} onChange={this.changeemail} /> 
 //                     {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
 //                 </div>
 //                 <br />
 //                 <div>
-//                     <label>Password:   </label>
-//                     <input class="occupy" type="text" value={this.state.Password} onChange={this.changePassword}/>
+//                     <label>password:   </label>
+//                     <input class="occupy" type="text" value={this.state.password} onChange={this.changepassword}/>
 //                 </div>
 //                 <br />
 //                 <div>
-//                     <label>Re-Enter Password:   </label>
-//                     <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changePasswordTwo}/>
+//                     <label>Re-Enter password:   </label>
+//                     <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changepasswordTwo}/>
 //                 </div>
 //                 <br />
 //                 <Link to="/allevents">
@@ -271,15 +294,15 @@ export default SignUp;
 //     };
 //   }
 
-//   onEmailChange = (event) => {
+//   onemailChange = (event) => {
 //     this.setState({ email: event.target.value });
 //   }
 
-//   onPasswordChange= (event) => {
+//   onpasswordChange= (event) => {
 //     this.setState({ password: event.target.value });
 //   }
 
-//   onPasswordTwoChange= (event) => {
+//   onpasswordTwoChange= (event) => {
 //     this.setState({ passwordTwo: event.target.value });
 //   }
 
@@ -294,7 +317,7 @@ export default SignUp;
 
 //   handleSignupButtonClick = (event) => {
 //     if ((this.state.email.endsWith('@dartmouth.edu') || this.state.email.endsWith('@Dartmouth.edu')) && this.state.password === this.state.passwordTwo) {
-//       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch((error) => {
+//       firebase.auth().createUserWithemailAndpassword(this.state.email, this.state.password).catch((error) => {
 //         alert(error);
 //       });
 
@@ -328,15 +351,15 @@ export default SignUp;
 //         <div className="displaySignInInfo">
 //           <div className="leftJustify">
 //             <div className="prompt"> Enter your Dartmouth email: </div>
-//             <Input className="response" placeholder="Dartmouth Email" onChange={this.onEmailChange} value={this.state.email} />
+//             <Input className="response" placeholder="Dartmouth email" onChange={this.onemailChange} value={this.state.email} />
 //             <div className="prompt"> Enter your first name: </div>
 //             <Input className="response" placeholder="First name" onChange={this.onFirstUsernameChange} value={this.state.firstusername} />
 //             <div className="prompt"> Enter your last name: </div>
 //             <Input className="response" placeholder="Last name" onChange={this.onLastUsernameChange} value={this.state.lastusername} />
 //             <div className="prompt"> Enter a password: </div>
-//             <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordChange} value={this.state.password} />
+//             <Input type="password" className="response" id="passwordInput" placeholder="password" onChange={this.onpasswordChange} value={this.state.password} />
 //             <div className="prompt"> Confirm password: </div>
-//             <Input type="password" className="response" id="passwordInput" placeholder="Password" onChange={this.onPasswordTwoChange} value={this.state.passwordTwo} />
+//             <Input type="password" className="response" id="passwordInput" placeholder="password" onChange={this.onpasswordTwoChange} value={this.state.passwordTwo} />
 
 //           </div>
 //           <div>

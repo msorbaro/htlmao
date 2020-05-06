@@ -5,23 +5,30 @@ import Filter from './filter';
 import * as db from '../datastore.js';
 import Event from './event';
 import '../App.css'
+import firebase from 'firebase';
 
 class Calendar extends Component {
     constructor(props) {
         super(props);
-        this.state = {events: null};
+        this.state = {events: null, authenticated: false};
 
     }
 
     componentDidMount(){
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user){
+                this.setState({authenticated: true});
+                this.setState({email: user.email});
+                // Do we even need this email and ID thing?
+                this.setState({userID: user.uid});
+            }
+        });
         db.fetchNewPost(this.fetchedNewPosts);
     }
 
     fetchedNewPosts= (allEvents) =>{
         this.setState({events: allEvents});
     }
-
-
 
     render() {
         // let allEvents=null;
@@ -103,9 +110,9 @@ class Calendar extends Component {
     //     alert(arg.dateStr);
     // }
 
-    handleEventClick = (arg) => {
+    // handleEventClick = (arg) => {
         
-    }
+    // }
 
 }
 
