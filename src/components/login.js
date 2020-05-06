@@ -50,8 +50,8 @@ class Login extends Component {
                 // </div>    
                 <div>
                     Sup Bruhhh
-                    <signIn />
-                    <signUp />
+                    <SignIn />
+                    <SignUp />
                 </div>
             );
         }
