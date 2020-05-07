@@ -31,10 +31,15 @@ changePassword = (event) => {
 // }
 
 signIn = (event) => {
+    alert('sign in is called')
     firebase.auth().signInWithEmailAndPassword(this.state.Email, this.state.Password).catch((error) => {
       alert(error);
     });
+
+    alert(this.state.Email +" "+ this.state.Password)
+    
     firebase.auth().onAuthStateChanged((user) => {
+      alert('value of user: '+user)
       if (user) {
         this.props.history.push('/allevents');
       }
@@ -61,9 +66,7 @@ signIn = (event) => {
                         <input class="occupy" type="text" value={this.state.Password} onChange={this.changePassword}/>
                     </div>
                     <br />
-                    <Link to="/allevents">
                         <button class="submitButton" type="submit">Login</button>
-                    </Link>
                     <br />
                 </div>
             </form>

@@ -44,6 +44,7 @@ class SignUp extends Component {
       });
 
       firebase.auth().onAuthStateChanged((user) => {
+        alert("value of user "+user)
         if (user) {
           firebase.database().ref(`users/${user.uid}`).set({
             email: this.state.email,
@@ -57,6 +58,7 @@ class SignUp extends Component {
     } else {
       alert('Make sure passwords match');
     }
+
   }
 
   render() {
@@ -84,9 +86,7 @@ class SignUp extends Component {
                     <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changepasswordTwo}/>
                 </div>
                 <br />
-                <Link to="/allevents">
                     <button class="submitButton" type="submit">Create Account</button>
-                </Link>
                 <br />
             </div>
         </form>
