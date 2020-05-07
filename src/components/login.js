@@ -4,6 +4,7 @@ import SignIn from './signin';
 import SignUp from './signup';
 import { signUp, signIn } from '../datastore';
 import firebase from 'firebase';
+import Calendar from './calendar';
 
 
 class Login extends Component {
@@ -55,7 +56,12 @@ class Login extends Component {
                 </div>
             );
         }
-        // Might need an else
+        else{
+            return(
+            <div>Inside the else <br />Really needed the else <br /> </div>
+            // Since signIn returns us to this place, do we route to allevents from here?
+            )
+        }
     };
 }
 

@@ -31,16 +31,17 @@ changePassword = (event) => {
 // }
 
 signIn = (event) => {
-    alert('sign in is called')
+    // alert('sign in is called')
     firebase.auth().signInWithEmailAndPassword(this.state.Email, this.state.Password).catch((error) => {
       alert(error);
+      console.log(error);
     });
-
-    alert(this.state.Email +" "+ this.state.Password)
     
     firebase.auth().onAuthStateChanged((user) => {
-      alert('value of user: '+user)
       if (user) {
+        console.log(user);
+        console.log("Hello");
+        // We are not able to route to all events from here
         this.props.history.push('/allevents');
       }
     });
@@ -48,7 +49,8 @@ signIn = (event) => {
 
   render() {
       return (
-        <form onSubmit={this.signIn}>
+        // <form>
+        <div>
             <div class="LoginContainer">
                 <br />
                 <div>
@@ -66,10 +68,11 @@ signIn = (event) => {
                         <input class="occupy" type="text" value={this.state.Password} onChange={this.changePassword}/>
                     </div>
                     <br />
-                        <button class="submitButton" type="submit">Login</button>
+                        <button onClick={this.signIn} class="submitButton">Login</button>
                     <br />
                 </div>
-            </form>
+            {/* </form> */}
+             </div>
       )
   }
 }
