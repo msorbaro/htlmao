@@ -12,7 +12,8 @@ class Login extends Component {
         super(props);
   
         this.state = {
-            authenticated: false
+            authenticated: false,
+            userEmail: ""
         }
     }
 
@@ -20,9 +21,11 @@ class Login extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user){
                 this.setState({authenticated: true});
+                this.setState({userEmail: user.email});
             }
             else{
                 this.setState({authenticated: false});
+                this.setState({userEmail: ""});
             }
         });
         // db.fetchNewPost(this.fetchedNewPosts);
@@ -58,7 +61,13 @@ class Login extends Component {
         }
         else{
             return(
-            <div>Inside the else <br />Really needed the else <br /> </div>
+            <div>
+                Inside the else
+                <br />
+                Really needed the else
+                <br />
+                Hello {this.state.userEmail.split('.')[0]}, you are logged in 
+            </div>
             // Since signIn returns us to this place, do we route to allevents from here?
             )
         }
@@ -66,3 +75,4 @@ class Login extends Component {
 }
 
 export default Login;
+
