@@ -53,21 +53,18 @@ class Login extends Component {
                 //     <SignUp/>
                 // </div>    
                 <div>
-                    Sup Bruhhh
                     <SignIn />
                     <SignUp />
                 </div>
             );
         }
         else{
+            this.props.history.push('/allevents');
             return(
-            <div>
-                Inside the else
-                <br />
-                Really needed the else
-                <br />
-                Hello {this.state.userEmail.split('.')[0]}, you are logged in 
-            </div>
+                null
+            // <div>
+            //     Hello {this.state.userEmail.split('.')[0]}, you are logged in 
+            // </div>
             // Since signIn returns us to this place, do we route to allevents from here?
             )
         }
