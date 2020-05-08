@@ -71,18 +71,18 @@ class SignUp extends Component {
                 </div>
                 <br />
                 <div>
-                    <label>email:   </label>
+                    <label>Email:   </label>
                     <input class="occupy" type="text" value={this.state.email} onChange={this.changeemail} /> 
                     {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
                 </div>
                 <br />
                 <div>
-                    <label>password:   </label>
+                    <label>Password:   </label>
                     <input class="occupy" type="text" value={this.state.password} onChange={this.changepassword}/>
                 </div>
                 <br />
                 <div>
-                    <label>Re-Enter password:   </label>
+                    <label>Re-Enter Password:   </label>
                     <input class="occupy" type="text" value={this.state.passwordTwo} onChange={this.changepasswordTwo}/>
                 </div>
                 <br />

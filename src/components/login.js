@@ -52,7 +52,7 @@ class Login extends Component {
                 //     <SignIn/>
                 //     <SignUp/>
                 // </div>    
-                <div>
+                <div className = "LoginWrapper">
                     <SignIn />
                     <SignUp />
                 </div>

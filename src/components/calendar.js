@@ -88,8 +88,10 @@ class Calendar extends Component {
                 <div className="bluebox">
                     {/* {pageName} */}
                 </div>
-                <Filter/>
-                <FullCalendar 
+                
+                <div className = "calContainer">
+                    <Filter/>
+                    <FullCalendar
                 defaultView="dayGridWeek" 
                 plugins={[ dayGridPlugin ]}
                 // events={[
@@ -102,6 +104,7 @@ class Calendar extends Component {
 
 
                 />
+            </div> 
             </div>
         )
     }

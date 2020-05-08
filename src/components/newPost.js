@@ -8,11 +8,10 @@ import { DayBgRow } from '@fullcalendar/daygrid';
 import * as db from '../datastore.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
-//import DatePicker from 'react-datepicker';
-//import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 //import axios from 'axios';
 //import DatePicker from 'react-datepicker/dist/react-datepicker';
-import '../react-datepicker';
 
 
 class NewPost extends Component {
