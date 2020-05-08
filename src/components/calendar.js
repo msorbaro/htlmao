@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import Filter from './filter';
 import * as db from '../datastore.js';
 import Event from './event';
@@ -92,8 +93,8 @@ class Calendar extends Component {
                 <div className = "calContainer">
                     <Filter/>
                     <FullCalendar
-                defaultView="dayGridWeek" 
-                plugins={[ dayGridPlugin ]}
+                defaultView="timeGridWeek" 
+                plugins={[ timeGridPlugin ]}
                 // events={[
                 //     {title: 'event 1', date: '2020-04-24'},
                 //     {title: 'event 2', date: '2020-04-25'}

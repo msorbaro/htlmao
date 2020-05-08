@@ -28,7 +28,8 @@ class NewPost extends Component {
             AdditionalDescription:"",
             Category:"Athletics",
             Food:"No",
-            Date: new Date()
+            Date: new Date(),
+            StringDate:""
         };
     }
     
@@ -99,6 +100,7 @@ class NewPost extends Component {
         this.setState({
           Date: date
         });
+        // this.setState({StringDate: this.state.Date.getFullYear+"-"+this.state.Date.getMonth+"-"+this.state.Date.getDate});
       };
 
     render() {
@@ -187,7 +189,7 @@ class NewPost extends Component {
                             <DatePicker
                                 selected={this.state.Date}
                                 onChange={this.handleChange}
-                                dateFormat='yyyy/MM/dd'	
+                                dateFormat='yyyy-MM-dd'	
                             />
                         </div>
                         <br />
