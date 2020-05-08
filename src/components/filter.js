@@ -133,7 +133,7 @@ class Filter extends Component {
                         <input type="checkbox" id="other" name="category" onClick={this.otherClicked}></input>
                         <label for="other">Other</label> 
                     </li>
-                </ul>            
+                </ul>      
             </div>
         );
     }

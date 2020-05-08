@@ -13,8 +13,12 @@
     border-color: black;
 }
 
-.calContainer{
-    display: grid;
+.calAndFilterContainer{
+    /* display: grid; */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
     grid-template-columns: 1fr 1fr;
     width: 75vh;
     overflow: hidden;
@@ -27,4 +31,5 @@
 
 .FullCalendar {
     float: left;
+    width: 80%;
 }

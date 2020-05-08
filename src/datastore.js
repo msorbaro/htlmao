@@ -29,7 +29,6 @@ export function signOut() {
     });
 }
 
-
 export function signIn(email, password) {
     ourAuth.signInWithEmailAndPassword(email, password)
         .then(function() {
@@ -44,9 +43,9 @@ export function signIn(email, password) {
 
 }
 
-export function addNewPost(StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food, Date) {
+export function addNewPost(StudentGroup, EventTitle, Place, AdditionalDescription, Category, Food, StartDate, EndDate) {
     ourDB.ref('NewPost/').push({
-        StudentGroup, EventTitle, Time, Place, AdditionalDescription, Category, Food, Date
+        StudentGroup, EventTitle, Place, AdditionalDescription, Category, Food, StartDate, EndDate
     });
 }
 

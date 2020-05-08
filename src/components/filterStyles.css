@@ -1,6 +1,10 @@
 .filterContainer {
     position: relative;
     left: 1vw;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
 
     border-radius: 10px;
     align-self: center;
@@ -26,7 +30,6 @@ legend {
 }
 
 ul.checkbox {
-
     text-align: left;
     margin: 5px;
     padding: 0px;

@@ -11,9 +11,27 @@ import firebase from 'firebase';
 class Calendar extends Component {
     constructor(props) {
         super(props);
-        this.state = {events: null, authenticated: false};
-
+        this.state = { 
+            authenticated: false,
+            events: [],
+            unshownEvents: [],
+            showAthletics: true,
+            showMusic: true,
+            showDance: true,
+            showArt: true,
+            showGreekLife: true,
+            showProgramming: true,
+            showClub: true,
+            showGuestSpeaker: true,
+            showHealth: true,
+            showProfessional: true,
+            showReligious: true,
+            showFoodProvided: true,
+            showOther: true,
+        };
     }
+
+    calendarRef = React.createRef();
 
     componentDidMount(){
         firebase.auth().onAuthStateChanged((user) => {
@@ -27,55 +45,92 @@ class Calendar extends Component {
         db.fetchNewPost(this.fetchedNewPosts);
     }
 
-    fetchedNewPosts= (allEvents) =>{
-        this.setState({events: allEvents});
+    fetchedNewPosts = (allEvents) =>{
+        if(allEvents!=null) {
+            var array = []
+            for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+                const currKey = Object.keys(allEvents)[i];
+                const currItem = allEvents[currKey];
+                array.push(currItem);
+            }
+            this.setState({events: array});
+        }
     }
 
-    render() {
-        // let allEvents=null;
-        // if (this.state.events!=null){
-        //     allEvents = Object.keys(this.state.events).map((id) => {
-        //         const info = this.state.events[id];
-        //         return <Event 
-        //           save={this.save} 
-        //           delete={this.delete} 
-        //           studentGroup={info.StudentGroup} 
-        //           eventTitle={info.EventTitle} 
-        //           time={info.Time} 
-        //           place={info.Place} 
-        //           additionalDescription={info.AdditionalDescription}
-        //           category={info.Category}
-        //           food={info.Food}
-        //           id={id} />
-        //       })
-        // }
-        let listOfPairs = null;
-
-        if (this.state.events!=null){
-            listOfPairs = Object.keys(this.state.events).map((id) => {
-                const info = this.state.events[id];
-                return {
-                    // time: info.Time,
-                    title: info.EventTitle,
-                    date: toString(info.Date).replace("/", "-")
-                }})
-                
-            //     return <Event 
-            //       save={this.save} 
-            //       delete={this.delete} 
-            //       studentGroup={info.StudentGroup} 
-            //       eventTitle={info.EventTitle} 
-            //       time={info.Time} 
-            //       place={info.Place} 
-            //       additionalDescription={info.AdditionalDescription}
-            //       category={info.Category}
-            //       food={info.Food}
-            //       id={id} />
-            //   })
+    getEvents = (allEvents) =>{
+        var array = []
+        for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+            const currKey = Object.keys(allEvents)[i];
+            const currItem = allEvents[currKey];
+            array.push(currItem);
         }
+        this.setState({events: array});
+    }
 
-        // let listOfPairs=[{title: 'event 1', date: '2020-04-24'}]
+    setCalInfo = (allEvents) => {
+        if(allEvents!=null) {
+            var array = []
+            for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+                const currKey = Object.keys(allEvents)[i];
+                const currItem = allEvents[currKey];
+                array.push(currItem);
+            }
+            this.setState({events: array});
+        }
+    }
 
+    setEvents = (allEvents) => {
+        if (allEvents!= null) {
+            var array = []
+            for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+            const currKey = Object.keys(allEvents)[i];
+            const currItem = allEvents[currKey];
+            array.push(currItem);
+            }
+        this.setState({events: array});
+        }
+    }
+
+    //filter functions
+    filterAthletics = () => {
+        var array = Array.from(this.state.events)
+        if(this.state.showAthletics === false){
+            for (let i = Object.keys(this.state.unshownEvents).length-1; i >= 0; i -= 1) {
+              const currKey = Object.keys(this.state.unshownEvents)[i];
+              const currItem = this.state.unshownEvents[currKey];
+              if(currItem.state.Category === "Athletics"){
+                array.push(currItem);
+                this.state.unshownEvents.splice(i, 1)
+              }
+            }
+            this.setState({events: array})
+        }
+        else {
+            for (let i = Object.keys(this.state.events).length -1 ; i >= 0; i -= 1) {
+                const currKey = Object.keys(this.state.events)[i];
+                const currItem = this.state.events[currKey];
+                if(currItem.state.Category === "Athletics"){
+                    this.state.unshownEvents.push(currItem);
+                    array.splice(i, 1)
+                }       
+            }
+        this.setState({events: array})
+        }
+        this.setState({ showClasses: !this.state.showClasses })
+    }
+    
+    render() {
+        // let listOfEvents = null;
+
+        // if (this.state.events!=null){
+        //     listOfEvents = Object.keys(this.state.events).map((id) => {
+        //         const info = this.state.events[id];
+        //         return {
+        //             title: info.EventTitle,
+        //             date: toString(info.Date).replace("/", "-")
+        //         }})
+        // }
+        
         // var pageName = null;
         // if (this.router.url==='/allevents') {
         //     pageName = <p className="pageTitle">All Events</p>
@@ -90,22 +145,16 @@ class Calendar extends Component {
                     {/* {pageName} */}
                 </div>
                 
-                <div className = "calContainer">
-                    <Filter/>
+                <div className = "calAndFilterContainer">
+                    <div><Filter/></div>
+                    <div>
                     <FullCalendar
-                defaultView="timeGridWeek" 
-                plugins={[ timeGridPlugin ]}
-                // events={[
-                //     {title: 'event 1', date: '2020-04-24'},
-                //     {title: 'event 2', date: '2020-04-25'}
-                // ]}
-                // events={[{title: ''}]}
-                events={listOfPairs}
-
-
-
-                />
-            </div> 
+                        defaultView="dayGridWeek" 
+                        plugins={[ timeGridPlugin, dayGridPlugin ]}
+                        events={this.state.events}
+                    />
+                    </div>
+                </div> 
             </div>
         )
     }

@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import TimePicker from 'react-time-picker';
 //import axios from 'axios';
 //import DatePicker from 'react-datepicker/dist/react-datepicker';
 
@@ -19,17 +20,19 @@ class NewPost extends Component {
         super(props);
 
         this.state = {
-            events: null,
+            events: [],
             eventID: 0, 
             StudentGroup:"",
             EventTitle:"",
-            Time:"",
+            // Time:"",
             Place:"",
             AdditionalDescription:"",
             Category:"Athletics",
             Food:"No",
-            Date: new Date(),
-            StringDate:""
+            // Date: new Date(),
+            StartDate: "",
+            EndDate: "",
+            // StringDate:""
         };
     }
     
@@ -38,7 +41,15 @@ class NewPost extends Component {
     }
 
     fetchedNewPosts= (allEvents) =>{
-        this.setState({events: allEvents});
+        if(allEvents!=null) {
+            var array = []
+            for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+                const currKey = Object.keys(allEvents)[i];
+                const currItem = allEvents[currKey];
+                array.push(currItem);
+            }
+            this.setState({events: array});
+        }
     }
 
     changeStudentGroup = (event) => {
@@ -49,10 +60,10 @@ class NewPost extends Component {
         this.setState({EventTitle: event.target.value});
         // console.log(this.state.EventTitle);
     }
-    changeTime = (event) => {
-        this.setState({Time: event.target.value});
-        // console.log(this.state.Time);
-    }
+    // changeTime = (event) => {
+    //     this.setState({Time: event.target.value});
+    //     // console.log(this.state.Time);
+    // }
     changePlace = (event) => {
         this.setState({Place: event.target.value});
         // console.log(this.state.Place);
@@ -74,6 +85,21 @@ class NewPost extends Component {
         // console.log(this.state.Food);
     }
 
+    changeStartDate = (event) => {
+        this.setState({StartDate: event.target.value});
+    }
+
+    changeEndDate = (event) => {
+        this.setState({EndDate: event.target.value});
+    }
+
+    // changeDate = date => {
+    //     this.setState({
+    //       Date: date
+    //     });
+    //     // this.setState({StringDate: this.state.Date.getFullYear+"-"+this.state.Date.getMonth+"-"+this.state.Date.getDate});
+    //   };
+
     delete = (eventID) => {
         // this.setState({dogs: this.state.dogs.delete(id)})
         db.removeNewPost(eventID);
@@ -81,27 +107,55 @@ class NewPost extends Component {
     }
 
     saveEventInfo = () => {
-        db.addNewPost(this.state.StudentGroup, this.state.EventTitle, this.state.Time, this.state.Place, this.state.AdditionalDescription, this.state.Category, this.state.Food, this.state.Date);
+        var event = {
+            title: this.state.EventTitle,
+            start: this.state.StartDate + ":00",
+            end: this.state.EndDate + ":00",
+            className: 'event' + this.state.Category,
+        }
+
+        db.addNewPost(
+            this.state.StudentGroup, 
+            this.state.EventTitle, 
+            // this.state.Time, 
+            this.state.Place, 
+            this.state.AdditionalDescription, 
+            this.state.Category, 
+            this.state.Food, 
+            this.state.StartDate,
+            this.state.EndDate,
+            // this.state.Date
+            event,
+        );
+
         this.setState({
             StudentGroup:"",
             EventTitle:"",
-            Time:"",
+            // Time:"",
             Place:"",
             AdditionalDescription:"",
             Category:"Athletics",
             Food:"No",
-            Date: new Date()
+            StartDate: "",
+            EndDate: "",
+            // Date: new Date()
         });
+        
         db.fetchNewPost(this.fetchedNewPosts);
         this.props.history.push('/allevents');
     }
 
-    handleChange = date => {
-        this.setState({
-          Date: date
-        });
-        // this.setState({StringDate: this.state.Date.getFullYear+"-"+this.state.Date.getMonth+"-"+this.state.Date.getDate});
-      };
+    setEvents = (allEvents) => {
+        if (allEvents!= null) {
+            var array = []
+            for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+            const currKey = Object.keys(allEvents)[i];
+            const currItem = allEvents[currKey];
+            array.push(currItem);
+            }
+        this.setState({events: array});
+        }
+    }
 
     render() {
         let allEvents = null;
@@ -113,12 +167,12 @@ class NewPost extends Component {
               delete={this.delete} 
               studentGroup={info.StudentGroup} 
               eventTitle={info.EventTitle} 
-              time={info.Time} 
               place={info.Place} 
               additionalDescription={info.AdditionalDescription}
               category={info.Category}
               food={info.Food}
-              date={info.Date}
+              startDate={info.StartDate}
+              endDate={info.EndDate}
               id={id} />
           })
         }
@@ -142,10 +196,6 @@ class NewPost extends Component {
                             <input class="occupy" type="text" value={this.state.EventTitle} onChange={this.changeEventTitle}/>
                         </div>
                         <br />
-                        <div>
-                            <label>Time:   </label>
-                            <input class="occupy" type="text" value={this.state.Time} onChange={this.changeTime}/>
-                        </div>
                         <br />
                         <div>
                             <label>Place:   </label>
@@ -181,16 +231,13 @@ class NewPost extends Component {
                             <label>Additional Description:   </label>
                             <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
                         </div>
-                        {/* <div>
-                            <label>Date:   </label>
-                            <input type="text" value={this.state.Date} onChange={this.changeDate} />
-                        </div> */}
                         <div>
-                            <DatePicker
-                                selected={this.state.Date}
-                                onChange={this.handleChange}
-                                dateFormat='yyyy-MM-dd'	
-                            />
+                            <label>Start:   </label>
+                            <input type="datetime-local" value={this.state.StartDate} onChange={this.changeStartDate} />
+                        </div>
+                        <div>
+                            <label>End:   </label>
+                            <input type="datetime-local" value={this.state.EndDate} onChange={this.changeEndDate} />
                         </div>
                         <br />
                         {/* <Link to="/allevents"> */}

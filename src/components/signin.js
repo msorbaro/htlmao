@@ -58,14 +58,14 @@ signIn = (event) => {
                 </div>
                     <br />
                     <div>
-                        <label>Email:   </label>
+                        <label>Dartmouth Email:   </label>
                         <input class="occupy" type="text" value={this.state.Email} onChange={this.changeEmail} /> 
                         {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
                     </div>
                     <br />
                     <div>
                         <label>Password:   </label>
-                        <input class="occupy" type="text" value={this.state.Password} onChange={this.changePassword}/>
+                        <input class="occupy" type="password" value={this.state.Password} onChange={this.changePassword}/>
                     </div>
                     <br />
                         <button onClick={this.signIn} class="submitButton">Login</button>

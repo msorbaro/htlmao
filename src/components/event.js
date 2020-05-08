@@ -7,10 +7,9 @@ class Event extends Component {
         this.state = {}
     }
 
-  deletePosting = () => {
-    this.props.delete(this.props.id)
-}
-
+    deletePosting = () => {
+        this.props.delete(this.props.id)
+    }
 
 //   handleSubmit = () => {
 //     var eventData = {
@@ -38,19 +37,18 @@ class Event extends Component {
 //     })
 // }
 
-
     render() {
         return (
             <div>
                 <p>Group: {this.props.studentGroup}</p>
                 <p>Title: {this.props.eventTitle}</p>
-                <p>Date: {this.props.date}</p>
-                <p>Time: {this.props.time}</p>
+                <p>Start: {this.props.startDate}</p>
+                <p>End: {this.props.endDate}</p>
                 <p>Place: {this.props.place}</p>
                 <p>{this.props.additionalDescription}</p>
                 <p>Category: {this.props.category}</p>
                 <p>Food provided? {this.props.food}</p>
-                <button onClick={this.deletePosting}>Delete meeee</button>
+                <button onClick={this.deletePosting}>Delete Event</button>
 
                 {/* <button>Save Event</button> */}
             </div>
