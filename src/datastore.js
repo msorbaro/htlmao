@@ -43,9 +43,9 @@ export function signIn(email, password) {
 
 }
 
-export function addNewPost(StudentGroup, EventTitle, Place, AdditionalDescription, Category, Food, StartDate, EndDate) {
+export function addNewPost(StudentGroup, EventTitle, Place, AdditionalDescription, Category, Food, StartDate, EndDate, event) {
     ourDB.ref('NewPost/').push({
-        StudentGroup, EventTitle, Place, AdditionalDescription, Category, Food, StartDate, EndDate
+        StudentGroup, EventTitle, Place, AdditionalDescription, Category, Food, StartDate, EndDate, event
     });
 }
 
