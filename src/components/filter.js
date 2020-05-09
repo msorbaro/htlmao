@@ -126,10 +126,10 @@ class Filter extends Component {
                         <input type="checkbox" id="religious" name="category" onChange={this.props.religiousClicked}></input>
                         <label for="religious">Religious</label> 
                     </li>
-                    {/* <li>
+                    <li>
                         <input type="checkbox" id="food" name="category" onChange={this.props.foodClicked}></input>
                         <label for="food">Food Provided</label> 
-                    </li> */}
+                    </li>
                     <li>
                         <input type="checkbox" id="other" name="category" onChange={this.props.otherClicked}></input>
                         <label for="other">Other</label> 

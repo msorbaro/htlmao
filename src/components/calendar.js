@@ -31,7 +31,7 @@ class Calendar extends Component {
             showHealth: false,
             showProfessional: false,
             showReligious: false,
-            // showFoodProvided: false,
+            showFood: false,
             showOther: false,
 
             isOpen: false,
@@ -126,7 +126,7 @@ class Calendar extends Component {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
                 // console.log("className: "+currItem.className)
-                if(currItem.className==="eventMusic") {
+                if(currItem.className.includes("eventMusic")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -145,7 +145,7 @@ class Calendar extends Component {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
                 // console.log("className: "+currItem.className)
-                if(currItem.className==="eventMusic") {
+                if(currItem.className.includes("eventMusic")) {
                     // console.log("match: "+currItem)
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
@@ -169,7 +169,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventDance") {
+                if(currItem.className.includes("eventDance")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -181,7 +181,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventDance") {
+                if(currItem.className.includes("eventDance")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -198,7 +198,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventArt") {
+                if(currItem.className.includes("eventArt")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -210,7 +210,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventArt") {
+                if(currItem.className.includes("eventArt")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -227,7 +227,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventGreek") {
+                if(currItem.className.includes("eventGreek")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -239,7 +239,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventGreek") {
+                if(currItem.className.includes("eventGreek")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -256,7 +256,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventClub") {
+                if(currItem.className.includes("eventClub")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -268,7 +268,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventClub") {
+                if(currItem.className.includes("eventClub")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -285,7 +285,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventHealth") {
+                if(currItem.className.includes("eventHealth")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -297,7 +297,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventHealth") {
+                if(currItem.className.includes("eventHealth")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -313,7 +313,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventProfessional") {
+                if(currItem.className.includes("eventProfessional")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -325,7 +325,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventProfessional") {
+                if(currItem.className.includes("eventProfessional")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -341,7 +341,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventReligious") {
+                if(currItem.className.includes("eventReligious")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -353,7 +353,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventReligious") {
+                if(currItem.className.includes("eventReligious")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -370,7 +370,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                if(currItem.className==="eventOther") {
+                if(currItem.className.includes("eventOther")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
@@ -382,7 +382,7 @@ class Calendar extends Component {
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                if(currItem.className==="eventOther") {
+                if(currItem.className.includes("eventOther")) {
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
@@ -390,6 +390,36 @@ class Calendar extends Component {
             this.setState({events:array})
         }
         this.setState({showOther: !this.state.showOther})
+    }
+
+
+
+    foodClicked=()=>{
+        if (this.state.showFood===false){ 
+            var array = Array.from(this.state.events)
+            for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
+                const currKey=Object.keys(this.state.unshownEvents)[i];
+                const currItem=this.state.unshownEvents[currKey];
+                if(currItem.className.includes("Yes")) {
+                    array.push(currItem);
+                    this.state.unshownEvents.splice(i,1)
+                }
+            }
+            this.setState({events:array})
+        }
+        else {
+            var array = Array.from(this.state.events)
+            for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
+                const currKey=Object.keys(this.state.events)[i];
+                const currItem=this.state.events[currKey];
+                if(currItem.className.includes("Yes")) {
+                    this.state.unshownEvents.push(currItem)
+                    array.splice(i,1)
+                }
+            }
+            this.setState({events:array})
+        }
+        this.setState({showFood: !this.state.showFood})
     }
 
 
@@ -439,7 +469,7 @@ class Calendar extends Component {
                     healthClicked={this.healthClicked}
                     professionalClicked={this.professionalClicked}
                     religiousClicked={this.religiousClicked}
-                    // foodClicked={this.foodClicked}
+                    foodClicked={this.foodClicked}
                     otherClicked={this.otherClicked}
 
                     /></div>

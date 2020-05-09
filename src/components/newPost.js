@@ -114,7 +114,8 @@ class NewPost extends Component {
             title: this.state.EventTitle,
             start: this.state.StartDate + ":00",
             end: this.state.EndDate + ":00",
-            className: 'event' + this.state.Category,
+
+            className: 'event' + this.state.Category + this.state.Food,
             id: this.state.EventTitle+this.state.StartDate+":00", //use this to compare
             // url: this.state.id
         }
