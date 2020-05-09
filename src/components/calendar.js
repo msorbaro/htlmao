@@ -142,7 +142,7 @@ class Calendar extends Component {
         return (
             <div>
                 <div className="bluebox">
-                    {/* {pageName} */}
+                    <p className="pageTitle">All Events</p>
                 </div>
                 
                 <div className = "calAndFilterContainer">

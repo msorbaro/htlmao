@@ -33,7 +33,11 @@
 }
 
 .pageTitle {
-  font-size: 28px;;
+  color: black;
+  font-family: Open Sans;
+  font-size: 45px;
+  text-align: center;
+
 }
 
 .bluebox {

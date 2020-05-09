@@ -54,7 +54,7 @@ signIn = (event) => {
             <div class="LoginContainer">
                 <br />
                 <div>
-                  <h1>Sign In</h1>
+                  <h1 className= "LoginHeader">Sign In</h1>
                 </div>
                     <br />
                     <div>

@@ -9,10 +9,25 @@
     text-align: center;
     color: black;
     background-color: #EBEBEB;
-    padding: "10px";
-    font-family: "Arial";
-    width: 50vw;
-    height: 75vh;
+    font-family: Open Sans;
+    width: 48vw;
+    height: 90vh;
+    margin: 1vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+select {
+    height: 4vh;
+}
+textarea{
+    width: 25vw;
+    height: 7vh
+}
+
+.DateTime{
+    height: 4vh;
 }
 
 .occupy{
@@ -32,8 +47,8 @@ label{
     background: #00693E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 35px;
-    width: 200px;
-    height: 50px;
-    font-size: 25px;
+    width: 20vw;
+    height: 8vh;
+    font-size: 35px;
     color: white;
 }

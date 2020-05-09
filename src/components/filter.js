@@ -79,7 +79,7 @@ class Filter extends Component {
     render() {
         return (
             <div className="filterContainer">
-                <legend>Filter by</legend>
+                <legend>Filter By:</legend>
                 <ul class="checkbox">
                     <li>
                         <input type="checkbox" id="athletics" name="category" onClick={this.athleticsClicked}></input>

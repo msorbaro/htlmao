@@ -228,18 +228,19 @@ class NewPost extends Component {
                         </div>
                         <br />
                         <div>
-                            <label>Additional Description:   </label>
-                            <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
-                        </div>
-                        <div>
                             <label>Start:   </label>
-                            <input type="datetime-local" value={this.state.StartDate} onChange={this.changeStartDate} />
+                            <input className = "DateTime" type="datetime-local" value={this.state.StartDate} onChange={this.changeStartDate} />
                         </div>
                         <div>
                             <label>End:   </label>
-                            <input type="datetime-local" value={this.state.EndDate} onChange={this.changeEndDate} />
+                            <input className = "DateTime" type="datetime-local" value={this.state.EndDate} onChange={this.changeEndDate} />
                         </div>
                         <br />
+                        <div>
+                            <label>Additional Description:   </label>
+                            <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
+                        </div>
+                        <br/>
                         {/* <Link to="/allevents"> */}
                             <button class="submitButton" type="submit">Submit</button>
                         {/* </Link> */}
