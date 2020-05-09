@@ -65,7 +65,7 @@ class App extends Component {
       <Router>
         
         <div className="App">
-          <NavBar/>
+        {/* <NavBar/> */}
           {/* {loginOrElse} */}
           <div>
             <Route exact path="/" component={Login} />

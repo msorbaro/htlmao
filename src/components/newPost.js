@@ -183,7 +183,7 @@ class NewPost extends Component {
 
         return (
             <div class="trial">
-
+                <NavBar/>
                 <div className="bluebox">
                     <p className="pageTitle">Post an Event</p>
                 </div>

@@ -31,6 +31,8 @@ class NavBar extends Component {
           this.setState({ authenticated: false });
     }
 
+ 
+
     renderNav() {
         
         var navbar = null;
@@ -43,10 +45,10 @@ class NavBar extends Component {
                 <Link to="/postevent">
                     <a>Post an Event</a>
                 </Link>
-                <Link to="/myevents">
+                <Link to="/myevents" onClick={this.props.myevents}>
                     <a>My Events</a>
                 </Link>
-                <Link to="/allevents">
+                <Link to="/allevents" onClick={this.props.allevents}>
                     <a>All Events</a>
                 </Link>
             </div>
