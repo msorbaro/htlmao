@@ -175,8 +175,6 @@ class NewPost extends Component {
               food={info.Food}
               startDate={info.StartDate}
               endDate={info.EndDate}
-              
-            //   endDate={info.EndDate}
               id={id} />
           })
         }
