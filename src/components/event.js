@@ -11,11 +11,11 @@ class Event extends Component {
     // }
     render() {
         if(!this.props.show) {
-            console.log("show is false")
+            // console.log("show is false")
             return null;
         }
         else{
-            console.log("show is true")
+            // console.log("show is true")
         return (
             <div className="modal">
                 <div className="modalTitle">[event title]</div>

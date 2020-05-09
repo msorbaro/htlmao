@@ -27,7 +27,7 @@ class NewPost extends Component {
             // Time:"",
             Place:"",
             AdditionalDescription:"",
-            Category:"Athletics",
+            Category:"Music",
             Food:"No",
             // Date: new Date(),
             StartDate: "",
@@ -109,12 +109,13 @@ class NewPost extends Component {
     }
 
     saveEventInfo = () => {
-        
+        // console.log("className: "+this.state.Category)
         var event = {
             title: this.state.EventTitle,
             start: this.state.StartDate + ":00",
             end: this.state.EndDate + ":00",
             className: 'event' + this.state.Category,
+            id: this.state.EventTitle+this.state.StartDate+":00", //use this to compare
             // url: this.state.id
         }
 
@@ -215,15 +216,16 @@ class NewPost extends Component {
                         <div>
                             <label>Category:   </label>
                             <select value={this.state.Category} onChange={this.changeCategory}>
-                                <option value="Atheltics">Athletics</option>
+                                {/* <option value="Atheltics">Athletics</option> */}
+                                <option value="Music">Music</option>
+                                <option value="Dance">Dance</option>
+                                <option value="Art">Art</option>
                                 {/* <option value="Programming">Programming</option> */}
                                 <option value="Professional">Professional</option>
-                                <option value="Performance">Performance</option>
                                 <option value="Clubs">Clubs</option>
                                 <option value="Religious">Religious</option>
-                                <option value="Art">Art</option>
                                 {/* <option value="Guest Speaker">Guest Speaker</option> */}
-                                <option value="Greek Life">Greek Life</option>
+                                <option value="Greek">Greek Life</option>
                                 <option value="Health">Health</option>
                                 <option value="Other">Other</option>
                             </select>
