@@ -52,6 +52,15 @@ export function removeNewPost(eventID) {
     ourDB.ref('NewPost/' + eventID).remove();
 }
 
+
+// //fix??
+// export function getNewPost(eventID) {
+//     ourDB.ref('NewPost/'+eventID).on('value', (snapshot)=>{
+//         const oneEvent = snapshot.val();
+//         return oneEvent;
+//     });
+// }
+
 export function fetchNewPost(callback) {
     ourDB.ref('NewPost/').on('value', (snapshot) => {
         const allEvents = snapshot.val();

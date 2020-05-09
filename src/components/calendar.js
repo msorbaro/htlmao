@@ -73,10 +73,30 @@ class Calendar extends Component {
         //do something
     }
 
-    toggleModal=()=>{
-        this.setState({isOpen: !this.state.isOpen})
-        console.log("isOpen: "+this.state.isOpen)
+    closeModal=()=>{
+        this.setState({isOpen:false})
     }
+
+    openModal=(allEvents)=>{
+
+        var title = allEvents.event.title;
+        console.log("")
+        var oneEvent = null;
+        for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+            const currKey = Object.keys(allEvents)[i];
+            const currItem = allEvents[currKey];
+            console.log(currItem.EventTitle)
+            // if (currItem.EventTitle.localeCompare(title)==0){
+            //     oneEvent=currItem;
+            // }
+        }
+        console.log(oneEvent)
+
+        this.setState({isOpen: true})
+        return oneEvent;
+        // console.log("isOpen: "+this.state.isOpen)
+    };
+
 
     changeToAllEvents=()=>{
         if (!this.state.allEventsPage){
@@ -111,7 +131,7 @@ class Calendar extends Component {
                     defaultView="dayGridMonth"
                     plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
                     events={this.state.events}
-                    eventClick={this.toggleModal}
+                    eventClick={this.openModal}
             />
         }
         let pageTitle = "All Events"
@@ -131,7 +151,7 @@ class Calendar extends Component {
                     {calendar}
 
                     <div className="eventmodal">
-                        <Event show={this.state.isOpen} onClose={this.toggleModal} addMyEvent={this.addMyEvent}>
+                        <Event show={this.state.isOpen} onClose={this.closeModal} addMyEvent={this.addMyEvent}>
                         <div className="eventInfo">
                             hello
                         </div>
