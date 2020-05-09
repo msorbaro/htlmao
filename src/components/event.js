@@ -42,6 +42,7 @@ class Event extends Component {
             <div>
                 <p>Group: {this.props.studentGroup}</p>
                 <p>Title: {this.props.eventTitle}</p>
+                
                 <p>Start: {this.props.startDate}</p>
                 <p>End: {this.props.endDate}</p>
                 <p>Place: {this.props.place}</p>

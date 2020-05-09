@@ -40,7 +40,6 @@ export function signIn(email, password) {
             });
         }
     )
-
 }
 
 export function addNewPost(StudentGroup, EventTitle, Place, AdditionalDescription, Category, Food, StartDate, EndDate, event) {
