@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import Filter from './filter';
 import * as db from '../datastore.js';
 import Event from './event';
@@ -31,7 +32,7 @@ class Calendar extends Component {
         };
     }
 
-    calendarRef = React.createRef();
+    // calendarRef = React.createRef();
 
     componentDidMount(){
         firebase.auth().onAuthStateChanged((user) => {
@@ -45,47 +46,61 @@ class Calendar extends Component {
         db.fetchNewPost(this.fetchedNewPosts);
     }
 
-    fetchedNewPosts = (allEvents) =>{
+    fetchedNewPosts = (allEvents) => {
         if(allEvents!=null) {
+            console.log("hi")
             var array = []
             for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
                 const currKey = Object.keys(allEvents)[i];
+                console.log(currKey);
                 const currItem = allEvents[currKey];
-                array.push(currItem);
+                console.log(currItem);
+                console.log(currItem.event);
+                array.push(currItem.event);
             }
             this.setState({events: array});
-        }
-    }
 
-    getEvents = (allEvents) =>{
-        var array = []
-        for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
-            const currKey = Object.keys(allEvents)[i];
-            const currItem = allEvents[currKey];
-            array.push(currItem);
-        }
-        this.setState({events: array});
-    }
-
-    setCalInfo = (allEvents) => {
-        if(allEvents!=null) {
-            var array = []
-            for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
-                const currKey = Object.keys(allEvents)[i];
-                const currItem = allEvents[currKey];
-                array.push(currItem);
+            for (let i=0; i < array.length; i+=1) {
+                this.state.events.push(array[i]);
+                // this.setState({events: })
             }
-            this.setState({events: array});
+
+            console.log(this.state.events)
+            console.log(array);
         }
+        // this.setState({events: allEvents});
     }
+
+    // getEvents = (allEvents) =>{
+    //     var array = []
+    //     for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+    //         const currKey = Object.keys(allEvents)[i];
+    //         const currItem = allEvents[currKey];
+    //         array.push(currItem);
+    //     }
+    //     this.setState({events: array});
+    // }
+
+    // setCalInfo = (allEvents) => {
+    //     if(allEvents!=null) {
+    //         var array = []
+    //         for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+    //             const currKey = Object.keys(allEvents)[i];
+    //             const currItem = allEvents[currKey];
+    //             array.push(currItem);
+    //         }
+    //         this.setState({events: array});
+    //     }
+    // }
 
     setEvents = (allEvents) => {
         if (allEvents!= null) {
+            // var array = Array.from(this.state.events)
             var array = []
             for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
-            const currKey = Object.keys(allEvents)[i];
-            const currItem = allEvents[currKey];
-            array.push(currItem);
+                const currKey = Object.keys(allEvents)[i];
+                const currItem = allEvents[currKey];
+                array.push(currItem);
             }
         this.setState({events: array});
         }
@@ -120,14 +135,28 @@ class Calendar extends Component {
     }
     
     render() {
-        // let listOfEvents = null;
+        // console.log(this.state.events)
+
+        // if(this.state.events!=null) {
+        //     var array = []
+        //     for (let i = 0; i < Object.keys(this.state.events).length; i+=1) {
+        //         // const info = (this.state.events)[i];
+
+        //         const currKey = Object.keys(this.state.events)[i];
+        //         const currItem = this.state.events[currKey];
+        //         array.push(currItem.event);
+        //     }
+        //     this.setState({events: array});
+        //     }
 
         // if (this.state.events!=null){
-        //     listOfEvents = Object.keys(this.state.events).map((id) => {
+        //     // const currKey = Object.event()
+        //     listOfEvents = Object.keys(this.state.events).array((id) => {
         //         const info = this.state.events[id];
         //         return {
-        //             title: info.EventTitle,
-        //             date: toString(info.Date).replace("/", "-")
+        //             info.event,
+        //             // title: info.EventTitle,
+        //             // date: toString(info.Date).replace("/", "-")
         //         }})
         // }
         
@@ -139,6 +168,21 @@ class Calendar extends Component {
         //     pageName = <p className="pageTitle">My Events</p>
         // }
 
+        var calendar = <FullCalendar
+        defaultView="timeGridWeek" 
+        plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
+        // events={this.state.events}
+        />
+        if (this.state.events != null && this.state.events.length !== 0) {
+            console.log(this.state.events)
+            calendar = 
+                <FullCalendar
+                    defaultView="timeGridWeek" 
+                    plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
+                    // events={this.state.events}
+            />
+        }
+
         return (
             <div>
                 <div className="bluebox">
@@ -148,11 +192,7 @@ class Calendar extends Component {
                 <div className = "calAndFilterContainer">
                     <div><Filter/></div>
                     <div>
-                    <FullCalendar
-                        defaultView="dayGridWeek" 
-                        plugins={[ timeGridPlugin, dayGridPlugin ]}
-                        events={this.state.events}
-                    />
+                    {calendar}
                     </div>
                 </div> 
             </div>
