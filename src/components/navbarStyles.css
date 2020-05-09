@@ -30,7 +30,7 @@ flex-direction: column;
   
   overflow: hidden;
   background-color: #00693E;
-  min-height: 14vh;
+  min-height: 13vh;
   flex-direction: row-reverse;
   display: flex;
 }
@@ -68,6 +68,10 @@ flex-direction: column;
 .navbarlinks a:hover {
   background-color: #65B1FC;
 }
+
+/* .navbarlinks a:focus {
+  font-weight: bold;
+} */
 
 .kegpic {
     position: relative;

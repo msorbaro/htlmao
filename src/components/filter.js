@@ -12,9 +12,9 @@ class Filter extends Component {
             dance: true,
             art: true,
             greek: true,
-            programming: true,
+            // programming: true,
             club: true,
-            speaker: true,
+            // speaker: true,
             health: true,
             professional: true,
             religious: true,
@@ -43,18 +43,18 @@ class Filter extends Component {
         this.setState({greek: !this.state.greek})
         console.log("greek: "+this.state.greek)
     }
-    programmingClicked = () => {
-        this.setState({programming: !this.state.programming})
-        console.log("programming: "+this.state.programming)
-    }
+    // programmingClicked = () => {
+    //     this.setState({programming: !this.state.programming})
+    //     console.log("programming: "+this.state.programming)
+    // }
     clubClicked = () => {
         this.setState({club: !this.state.club})
         console.log("club: "+this.state.club)
     }
-    speakerClicked = () => {
-        this.setState({speaker: !this.state.speaker})
-        console.log("speaker: "+this.state.speaker)
-    }
+    // speakerClicked = () => {
+    //     this.setState({speaker: !this.state.speaker})
+    //     console.log("speaker: "+this.state.speaker)
+    // }
     healthClicked = () => {
         this.setState({health: !this.state.health})
         console.log("health: "+this.state.health)
@@ -101,18 +101,18 @@ class Filter extends Component {
                         <input type="checkbox" id="greek" name="category" onClick={this.greekClicked}></input>
                         <label for="greek">Greek Life</label> 
                     </li>
-                    <li>
+                    {/* <li>
                         <input type="checkbox" id="programming" name="category" onClick={this.programmingClicked}></input>
                         <label for="programming">Programming</label> 
-                    </li>
+                    </li> */}
                     <li>
                         <input type="checkbox" id="club" name="category" onClick={this.clubClicked}></input>
                         <label for="club">Club</label> 
                     </li>
-                    <li>
+                    {/* <li>
                         <input type="checkbox" id="speaker" name="category" onClick={this.speakerClicked}></input>
                         <label for="speaker">Guest Speaker</label> 
-                    </li>
+                    </li> */}
                     <li>
                         <input type="checkbox" id="health" name="category" onClick={this.healthClicked}></input>
                         <label for="health">Health</label> 
