@@ -33,6 +33,7 @@ class NewPost extends Component {
             StartDate: "",
             EndDate: "",
             // StringDate:""
+
         };
     }
     
@@ -41,15 +42,16 @@ class NewPost extends Component {
     }
 
     fetchedNewPosts= (allEvents) =>{
-        if(allEvents!=null) {
-            var array = []
-            for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
-                const currKey = Object.keys(allEvents)[i];
-                const currItem = allEvents[currKey];
-                array.push(currItem);
-            }
-            this.setState({events: array});
-        }
+        // if(allEvents!=null) {
+        //     var array = []
+        //     for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
+        //         const currKey = Object.keys(allEvents)[i];
+        //         const currItem = allEvents[currKey];
+        //         array.push(currItem);
+        //     }
+        //     this.setState({events: array});
+        // }
+        this.setState({events: allEvents});
     }
 
     changeStudentGroup = (event) => {
@@ -173,12 +175,17 @@ class NewPost extends Component {
               food={info.Food}
               startDate={info.StartDate}
               endDate={info.EndDate}
+              
+            //   endDate={info.EndDate}
               id={id} />
           })
         }
 
+        console.log(this.state.EndDate);
+
         return (
             <div>
+
                 <div className="bluebox">
                     <p className="pageTitle">Post an Event</p>
                 </div>
