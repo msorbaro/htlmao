@@ -33,13 +33,17 @@
 }
 
 .pageTitle {
-  font-size: 28px;;
+  color: black;
+  font-family: Open Sans;
+  font-size: 28px;
+  text-align: center;
+
 }
 
 .bluebox {
   overflow: hidden;
   background-color: #A3D4FF; 
-  min-height: 14vh;
+  min-height: 13vh;
 }
 /* 
 .App-link {

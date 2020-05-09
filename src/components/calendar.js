@@ -8,11 +8,10 @@ import * as db from '../datastore.js';
 import Event from './event';
 import '../App.css'
 import firebase from 'firebase';
-
 class Calendar extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             authenticated: false,
             events: [],
             unshownEvents: [],
@@ -31,9 +30,7 @@ class Calendar extends Component {
             showOther: true,
         };
     }
-
     calendarRef = React.createRef();
-
     async componentDidMount(){
         firebase.auth().onAuthStateChanged((user) => {
             if (user){
@@ -45,7 +42,6 @@ class Calendar extends Component {
         });
         db.fetchNewPost(this.fetchedNewPosts);
     }
-
     fetchedNewPosts = (allEvents) => {
         console.log("HERE");
         if(allEvents!=null) {
@@ -60,14 +56,12 @@ class Calendar extends Component {
             }
             // console.log("Array");
             // console.log(array);
-            this.setState({events: array}); 
+            this.setState({events: array});
             // Fuck this line
-
             // for (let i=0; i < array.length; i+=1) {
             //     console.log("ARRAY");
             //     console.log(array[i]);
             //     this.state.events.push(array[i]);
-                
             // }
             // console.log("Second for loop"+this.state.events[1].start);
             // console.log("Second for loop"+this.state.events[1].end);
@@ -77,7 +71,6 @@ class Calendar extends Component {
         }
         // this.setState({events: allEvents});
     }
-
     // getEvents = (allEvents) =>{
     //     var array = []
     //     for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
@@ -87,7 +80,6 @@ class Calendar extends Component {
     //     }
     //     this.setState({events: array});
     // }
-
     // setCalInfo = (allEvents) => {
     //     if(allEvents!=null) {
     //         var array = []
@@ -99,7 +91,6 @@ class Calendar extends Component {
     //         this.setState({events: array});
     //     }
     // }
-
     // setEvents = (allEvents) => {
     //     if (allEvents!= null) {
     //         // var array = Array.from(this.state.events)
@@ -112,7 +103,6 @@ class Calendar extends Component {
     //     this.setState({events: array});
     //     }
     // }
-
     //filter functions
     // filterAthletics = () => {
     //     var array = Array.from(this.state.events)
@@ -134,28 +124,24 @@ class Calendar extends Component {
     //             if(currItem.state.Category === "Athletics"){
     //                 this.state.unshownEvents.push(currItem);
     //                 array.splice(i, 1)
-    //             }       
+    //             }
     //         }
     //     this.setState({events: array})
     //     }
     //     this.setState({ showClasses: !this.state.showClasses })
     // }
-    
     render() {
         // console.log(this.state.events)
-
         // if(this.state.events!=null) {
         //     var array = []
         //     for (let i = 0; i < Object.keys(this.state.events).length; i+=1) {
         //         // const info = (this.state.events)[i];
-
         //         const currKey = Object.keys(this.state.events)[i];
         //         const currItem = this.state.events[currKey];
         //         array.push(currItem.event);
         //     }
         //     this.setState({events: array});
         //     }
-
         // if (this.state.events!=null){
         //     // const currKey = Object.event()
         //     listOfEvents = Object.keys(this.state.events).array((id) => {
@@ -166,7 +152,6 @@ class Calendar extends Component {
         //             // date: toString(info.Date).replace("/", "-")
         //         }})
         // }
-        
         // var pageName = null;
         // if (this.router.url==='/allevents') {
         //     pageName = <p className="pageTitle">All Events</p>
@@ -174,11 +159,11 @@ class Calendar extends Component {
         // else {
         //     pageName = <p className="pageTitle">My Events</p>
         // }
-        var hardEvents = [{title: 'Wrong 1', date: '2020-05-08'}, 
+        var hardEvents = [{title: 'Wrong 1', date: '2020-05-08'},
         {title: 'event 2', start:'2020-05-07T13:00:00', end: '2020-05-07T14:00:00'}];
         // var calendar = <FullCalendar
         // ref={this.calendarRef}
-        // defaultView="dayGridMonth" 
+        // defaultView="dayGridMonth"
         // // Or dayGridMonth timeGridWeek
         // plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
         // events = {hardEvents}
@@ -188,46 +173,37 @@ class Calendar extends Component {
         // console.log("I am not null!!! Events next");
         // console.log(this.state.events);
         // console.log("Length " + this.state.events.length);
-
-        
         if (this.state.events != null && this.state.events.length !== 0) {
-            calendar = 
+            calendar =
                 <FullCalendar
-                    defaultView="dayGridMonth" 
+                    defaultView="dayGridMonth"
                     plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
                     events={this.state.events}
             />
         }
-
         return (
             <div>
                 <div className="bluebox">
-                    {/* {pageName} */}
+                    <p className="pageTitle">All Events</p>
                 </div>
-                
                 <div className = "calAndFilterContainer">
                     <div><Filter/></div>
                     <div>
                     {calendar}
                         {/* <FullCalendar
-                        defaultView="timeGridWeek" 
+                        defaultView="timeGridWeek"
                         plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
                         // events={this.state.events}
                         /> */}
                     </div>
-                </div> 
+                </div>
             </div>
         )
     }
-
     // handleDateClick = (arg) => {
     //     alert(arg.dateStr);
     // }
-
     // handleEventClick = (arg) => {
-        
     // }
-
 }
-
 export default Calendar;

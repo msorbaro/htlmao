@@ -69,7 +69,7 @@ class SignUp extends Component {
          <div class="LoginContainer">
                <br />
                <div>
-                 <h1>Create New Account</h1>
+                 <h1 className = "LoginHeader">Create New Account</h1>
                </div>
                <br />
                <div>

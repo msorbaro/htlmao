@@ -182,7 +182,7 @@ class NewPost extends Component {
         console.log(this.state.EndDate);
 
         return (
-            <div>
+            <div class="trial">
 
                 <div className="bluebox">
                     <p className="pageTitle">Post an Event</p>
@@ -192,19 +192,19 @@ class NewPost extends Component {
                         <br />
                         <div>
                             <label>Student Group:   </label>
-                            <input class="occupy" type="text" value={this.state.StudentGroup} onChange={this.changeStudentGroup} /> 
+                            <input required class="occupy" type="text" value={this.state.StudentGroup} onChange={this.changeStudentGroup} /> 
                             {/* If i do not have the value set to this thing, even i type anyhing in the box, it will not show up */}
                         </div>
                         <br />
                         <div>
                             <label>Event Title:   </label>
-                            <input class="occupy" type="text" value={this.state.EventTitle} onChange={this.changeEventTitle}/>
+                            <input required class="occupy" type="text" value={this.state.EventTitle} onChange={this.changeEventTitle}/>
                         </div>
                         <br />
                         <br />
                         <div>
                             <label>Place:   </label>
-                            <input class="occupy" type="text" value={this.state.Place} onChange={this.changePlace}/>
+                            <input required class="occupy" type="text" value={this.state.Place} onChange={this.changePlace}/>
                         </div>
                         <br />
                         <div>
@@ -233,25 +233,27 @@ class NewPost extends Component {
                         </div>
                         <br />
                         <div>
+                            <label>Start:   </label>
+                            <input className = "DateTime" type="datetime-local" value={this.state.StartDate} onChange={this.changeStartDate} />
+                        </div>
+                        {/* Not sure how to make these required */}
+                        <div>
+                            <label>End:   </label>
+                            <input className = "DateTime" type="datetime-local" value={this.state.EndDate} onChange={this.changeEndDate} />
+                        </div>
+                        <br />
+                        <div>
                             <label>Additional Description:   </label>
                             <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
                         </div>
-                        <div>
-                            <label>Start:   </label>
-                            <input type="datetime-local" value={this.state.StartDate} onChange={this.changeStartDate} />
-                        </div>
-                        <div>
-                            <label>End:   </label>
-                            <input type="datetime-local" value={this.state.EndDate} onChange={this.changeEndDate} />
-                        </div>
-                        <br />
+                        <br/>
                         {/* <Link to="/allevents"> */}
                             <button class="submitButton" type="submit">Submit</button>
                         {/* </Link> */}
                         <br />
                     </div>
                 </form>
-                {allEvents}
+                {/* {allEvents} */}
             </div>    
         )
     }

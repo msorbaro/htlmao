@@ -1,20 +1,6 @@
-.LoginContainer{
-    border-radius: 50px;
-    align-self: center;
-    text-align: center;
-    color: black;
-    background-color: #EBEBEB;
-    font-family: Open Sans;
-    width: 48vw;
-    height: 75vh;
-    margin: 1vw;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-}
-
+/*
 .calAndFilterContainer{
-    /* display: grid; */
+    /* display: grid; 
     display: flex;
     justify-content: left;
     align-items: center;
@@ -32,4 +18,4 @@
 .FullCalendar {
     float: left;
     width: 80%;
-}
+} */
