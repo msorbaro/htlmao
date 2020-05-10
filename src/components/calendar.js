@@ -47,6 +47,7 @@ class Calendar extends Component {
             oneEventDescription: null,
             oneEventCategory: null,
             oneEventFood: null,
+            oneEventURL: null,
 
         };
     }
@@ -84,7 +85,7 @@ class Calendar extends Component {
     }
 
     addMyEvent=()=> {
-        //do something
+        window.open(this.state.oneEventURL, "_blank");
     }
 
     closeModal=()=>{
@@ -92,14 +93,8 @@ class Calendar extends Component {
     }
 
     openModal=(allEvents)=>{
-        // var title = allEvents.event.title;
-        // var start = allEvents.event.start;
-        // var group = allEvents.event.extendedProps.studentGroup;
 
-        // console.log(title);
-        // console.log(start);
-        // console.log(group);
-        console.log("url: "+allEvents.event.extendedProps.url)
+        // console.log("url: "+allEvents.event.extendedProps.url)
 
         this.setState({oneEventTitle: allEvents.event.title});
         this.setState({oneEventStart: allEvents.event.extendedProps.start});
@@ -109,6 +104,7 @@ class Calendar extends Component {
         this.setState({oneEventDescription: allEvents.event.extendedProps.description});
         this.setState({oneEventCategory: allEvents.event.extendedProps.category});
         this.setState({oneEventFood: allEvents.event.extendedProps.food});
+        this.setState({oneEventURL: allEvents.event.extendedProps.url})
       
         this.setState({isOpen: true})
 
@@ -516,6 +512,7 @@ class Calendar extends Component {
 
                     <div className="eventmodal">
                         <Event show={this.state.isOpen} 
+                        url={this.state.oneEventURL}
                         oneEventTitle={this.state.oneEventTitle}
                         oneEventCategory={this.state.oneEventCategory}
                         oneEventDescription={this.state.oneEventDescription}
@@ -524,8 +521,10 @@ class Calendar extends Component {
                         oneEventEnd={this.state.oneEventEnd}
                         oneEventStart={this.state.oneEventStart}
                         oneEventFood={this.state.oneEventFood}
+
                         onClose={this.closeModal} 
-                        addMyEvent={this.addMyEvent}>
+                        addMyEvent={this.addMyEvent}
+                        >
                         {/* <div className="eventInfo">
                             hello
                         </div> */}

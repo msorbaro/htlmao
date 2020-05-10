@@ -22,7 +22,6 @@ class Event extends Component {
             <div className="modal">
                 <div className="modalTitle">{this.props.oneEventTitle}</div>
                 {this.props.children}
-                
                 <div className="modalButton">
                     <button onClick={this.props.onClose}>Close</button>
                     <button onClick={this.props.addMyEvent}>Save to My Events</button>

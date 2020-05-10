@@ -109,14 +109,24 @@ class NewPost extends Component {
     }
 
     saveEventInfo = () => {
+
+        let urlTitle=this.state.EventTitle.split(' ').join('+');
+        let urlDates="20200512T224000Z/20200512T221500Z";
+        let urlLoc=this.state.Place.split(' ').join('+');
+        let urlDet=this.state.AdditionalDescription.split(' ').join('+');
+        
+        
         // console.log("className: "+this.state.Category)
         var event = {
             title: this.state.EventTitle,
             start: this.state.StartDate + ":00",
             end: this.state.EndDate + ":00",
             className: 'event' + this.state.Category + this.state.Food,
-            backgroundColor: '#65B1FC',
-            borderColor: '#65B1FC',
+            // backgroundColor: '#65B1FC',
+            // borderColor: '#65B1FC',
+            
+            backgroundColor: '#007D5F',
+            borderColor: '#007D5F',
             textColor: 'white',
 
 
@@ -128,7 +138,7 @@ class NewPost extends Component {
                 category: this.state.Category,
                 food: this.state.Food,
 
-                url:"i am the url"
+                url:" https://www.google.com/calendar/render?action=TEMPLATE&text="+urlTitle+"&dates="+urlDates+"&location="+urlLoc+"&details="+urlDet,
                 // this.state.StartDate,
                 // this.state.EndDate,
             }
