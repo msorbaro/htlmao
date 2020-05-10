@@ -18,7 +18,11 @@ class NavBar extends Component {
             this.setState({ authenticated: true });
           }
         });
-      }    
+      }  
+      
+    bruhhhAlert=()=>{
+        alert("bruhhh")
+    }
 
     signout = () => {
         // this.props.changeAuthenticateFalse();
@@ -93,7 +97,7 @@ class NavBar extends Component {
                 
                 <header className="TheKeg">The Keg</header>
                 <h1 className="Whatsontap">What's on tap for today?</h1>
-                <img src={require('../images/wine.png')} alt="keg pic" className="kegpic"/>
+                <img src={require('../images/wine.png')} alt="keg pic" className="kegpic" onClick={this.bruhhhAlert}/>
 
             </div>  
         );
