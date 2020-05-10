@@ -218,8 +218,10 @@ class NewPost extends Component {
                 {/* <div className="bluebox">
                     <p className="pageTitle">Post an Event</p>
                 </div> */}
+                <div class="centreMe">
                 <form onSubmit={this.saveEventInfo}>
                     <div class="OuterContainer">
+                        {/* Might not need the OuterContainer thing */}
                         <div>
                             <h1 className= "Header">New Post</h1>
                         </div>
@@ -281,12 +283,13 @@ class NewPost extends Component {
                             <textarea value={this.state.AdditionalDescription} onChange={this.changeAdditionalDescription} />
                         </div>
                         <br/>
-                        {/* <Link to="/allevents"> */}
-                            <button class="submitButton" type="submit">Submit</button>
-                        {/* </Link> */}
+                            <div>
+                                <button class="submitButton" type="submit">Submit</button>
+                            </div>
                         <br />
                     </div>
                 </form>
+                </div>
                 {/* {allEvents} */}
             </div>    
         )
