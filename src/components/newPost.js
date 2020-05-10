@@ -114,10 +114,22 @@ class NewPost extends Component {
             title: this.state.EventTitle,
             start: this.state.StartDate + ":00",
             end: this.state.EndDate + ":00",
-
             className: 'event' + this.state.Category + this.state.Food,
-            id: this.state.EventTitle+this.state.StartDate+":00", //use this to compare
-            // url: this.state.id
+            backgroundColor: '#8ABAA6',
+            borderColor: '#8ABAA6',
+            textColor: 'black',
+
+            extendedProps: {
+                studentGroup: this.state.StudentGroup,
+                place: this.state.Place,
+                description: this.state.AdditionalDescription,
+                category: this.state.Category,
+                food: this.state.Food
+
+
+                // this.state.StartDate,
+                // this.state.EndDate,
+            }
         }
 
         // console.log("id: eventID: "+this.state.id)

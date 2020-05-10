@@ -6,75 +6,11 @@ class Filter extends Component {
         super(props);
 
         this.state = {
-            //make a list variable here?
-            // athletics: true,
-            // music: true,
-            // dance: true,
-            // art: true,
-            // greek: true,
-            // // programming: true,
-            // club: true,
-            // // speaker: true,
-            // health: true,
-            // professional: true,
-            // religious: true,
-            // food: true,
-            // other: true
+            
         }
     }
 
-    // athleticsClicked = () => {
-    //     this.setState({athletics: !this.state.athlectics})
-    //     console.log("athletics: "+this.state.athletics)
-    // }
-    // musicClicked = () => {
-    //     this.setState({music: !this.state.music})
-    //     // console.log("music: "+this.state.music)
-    // }
-    // danceClicked = () => {
-    //     this.setState({dance: !this.state.dance})
-    //     console.log("dance: "+this.state.dance)
-    // }
-    // artClicked = () => {
-    //     this.setState({art: !this.state.art})
-    //     console.log("art: "+this.state.art)
-    // }
-    // greekClicked = () => {
-    //     this.setState({greek: !this.state.greek})
-    //     console.log("greek: "+this.state.greek)
-    // }
-    // // programmingClicked = () => {
-    // //     this.setState({programming: !this.state.programming})
-    // //     console.log("programming: "+this.state.programming)
-    // // }
-    // clubClicked = () => {
-    //     this.setState({club: !this.state.club})
-    //     console.log("club: "+this.state.club)
-    // }
-    // // speakerClicked = () => {
-    // //     this.setState({speaker: !this.state.speaker})
-    // //     console.log("speaker: "+this.state.speaker)
-    // // }
-    // healthClicked = () => {
-    //     this.setState({health: !this.state.health})
-    //     console.log("health: "+this.state.health)
-    // }
-    // professionalClicked = () => {
-    //     this.setState({professional: !this.state.professional})
-    //     console.log("professional: "+this.state.professional)
-    // }
-    // religiousClicked = () => {
-    //     this.setState({religious: !this.state.religious})
-    //     console.log("religious: "+this.state.religious)
-    // }
-    // foodClicked = () => {
-    //     this.setState({food: !this.state.food})
-    //     console.log("food: "+this.state.food)
-    // }
-    // otherClicked = () => {
-    //     this.setState({other: !this.state.other})
-    //     console.log("other: "+this.state.other)
-    // }
+
 
     render() {
         return (

@@ -36,7 +36,18 @@ class Calendar extends Component {
 
             isOpen: false,
 
-            allEventsPage: true
+            allEventsPage: true,
+
+
+            oneEventTitle: null,
+            oneEventStart: null,
+            oneEventEnd: null,
+            oneEventGroup: null,
+            oneEventPlace: null,
+            oneEventDescription: null,
+            oneEventCategory: null,
+            oneEventFood: null,
+
         };
     }
     calendarRef = React.createRef();
@@ -81,24 +92,30 @@ class Calendar extends Component {
     }
 
     openModal=(allEvents)=>{
+        // var title = allEvents.event.title;
+        // var start = allEvents.event.start;
+        // var group = allEvents.event.extendedProps.studentGroup;
 
-        var title = allEvents.event.title;
-        console.log("")
-        var oneEvent = null;
-        for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
-            const currKey = Object.keys(allEvents)[i];
-            const currItem = allEvents[currKey];
-            console.log(currItem.EventTitle)
-            // if (currItem.EventTitle.localeCompare(title)==0){
-            //     oneEvent=currItem;
-            // }
-        }
-        console.log(oneEvent)
+        // console.log(title);
+        // console.log(start);
+        // console.log(group);
 
+        this.setState({oneEventTitle: allEvents.event.title});
+        this.setState({oneEventStart: allEvents.event.start});
+        this.setState({oneEventEnd: allEvents.event.end});
+        this.setState({oneEventGroup: allEvents.event.extendedProps.studentGroup});
+        this.setState({oneEventPlace: allEvents.event.place});
+        this.setState({oneEventDescription: allEvents.event.description});
+        this.setState({oneEventCategory: allEvents.event.category});
+        this.setState({oneEventFood: allEvents.event.food});
+      
         this.setState({isOpen: true})
-        return oneEvent;
+
+        // console.log(this.state.oneEventTitle)
+        // return oneEvent;
         // console.log("isOpen: "+this.state.isOpen)
     };
+    
 
 
     changeToAllEvents=()=>{
@@ -114,10 +131,7 @@ class Calendar extends Component {
 
     musicClicked=()=>{
         console.log(this.state.showMusic)
-        // console.log("musicClicked running")
-        // this.setState({showMusic: !this.state.showMusic})
-        // console.log(this.state.showMusic)
-        //might reverse boolean?
+ 
 
         if (this.state.showMusic===false){ //about to be turned to true so show Music
             console.log("show music")
