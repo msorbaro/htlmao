@@ -16,13 +16,13 @@ class Event extends Component {
         }
         else{
 
-            console.log("event title: "+this.props.oneEventTitle)
+            // console.log("event title: "+this.props.oneEventTitle)
             // console.log("show is true")
         return (
             <div className="modal">
                 <div className="modalTitle">{this.props.oneEventTitle}</div>
                 {this.props.children}
-                <p>the modal is open</p>
+                
                 <div className="modalButton">
                     <button onClick={this.props.onClose}>Close</button>
                     <button onClick={this.props.addMyEvent}>Save to My Events</button>

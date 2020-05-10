@@ -198,7 +198,7 @@ class NewPost extends Component {
           })
         }
 
-        console.log(this.state.EndDate);
+        // console.log(this.state.EndDate);
 
         return (
             <div class="trial">

@@ -39,7 +39,7 @@ class Calendar extends Component {
             allEventsPage: true,
 
 
-            oneEventTitle: null,
+            oneEventTitle: "hello:)",
             oneEventStart: null,
             oneEventEnd: null,
             oneEventGroup: null,
@@ -101,19 +101,20 @@ class Calendar extends Component {
         // console.log(group);
 
         this.setState({oneEventTitle: allEvents.event.title});
-        this.setState({oneEventStart: allEvents.event.start});
-        this.setState({oneEventEnd: allEvents.event.end});
+        // console.log("calendar: "+this.state.oneEventTitle)
+        this.setState({oneEventStart: allEvents.event.extendedProps.start});
+        this.setState({oneEventEnd: allEvents.event.extendedProps.end});
         this.setState({oneEventGroup: allEvents.event.extendedProps.studentGroup});
-        this.setState({oneEventPlace: allEvents.event.place});
-        this.setState({oneEventDescription: allEvents.event.description});
-        this.setState({oneEventCategory: allEvents.event.category});
-        this.setState({oneEventFood: allEvents.event.food});
+        this.setState({oneEventPlace: allEvents.event.extendedProps.place});
+        this.setState({oneEventDescription: allEvents.event.extendedProps.description});
+        this.setState({oneEventCategory: allEvents.event.extendedProps.category});
+        this.setState({oneEventFood: allEvents.event.extendedProps.food});
       
         this.setState({isOpen: true})
 
-        // console.log(this.state.oneEventTitle)
-        // return oneEvent;
-        // console.log("isOpen: "+this.state.isOpen)
+        // console.log(this.state.oneEventStart)
+        // console.log(this.state.oneEventEnd)
+
     };
     
 
@@ -491,10 +492,31 @@ class Calendar extends Component {
                     {calendar}
 
                     <div className="eventmodal">
-                        <Event show={this.state.isOpen} onClose={this.closeModal} addMyEvent={this.addMyEvent}>
-                        <div className="eventInfo">
+                        <Event show={this.state.isOpen} 
+                        oneEventTitle={this.state.oneEventTitle}
+                        oneEventCategory={this.state.oneEventCategory}
+                        oneEventDescription={this.state.oneEventDescription}
+                        oneEventPlace={this.state.oneEventPlace}
+                        oneEventGroup={this.state.oneEventGroup}
+                        oneEventEnd={this.state.oneEventEnd}
+                        oneEventStart={this.state.oneEventStart}
+                        oneEventFood={this.state.oneEventFood}
+                        onClose={this.closeModal} 
+                        addMyEvent={this.addMyEvent}>
+                        {/* <div className="eventInfo">
                             hello
+                        </div> */}
+
+                        <div>
+                            <p>Student Group: {this.state.oneEventGroup}</p>
+                            <p>Place: {this.state.oneEventPlace}</p>
+                            <p>Category: {this.state.oneEventCategory}</p>
+                            <p>Food Provided: {this.state.oneEventFood}</p>
+                            <p>Start: {this.state.oneEventStart}</p>
+                            <p>End: {this.state.oneEventEnd}</p>
+                            <p>Additional Description: {this.state.oneEventDescription}</p>
                         </div>
+
                         </Event>
                     </div>
 
