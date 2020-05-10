@@ -1,10 +1,10 @@
 .modal {
-    position: absolute;
+    position: fixed;
     z-index: 1000;
     justify-content: center;
     width:70%;
     height: 70%;
-    top: 80%;
+    top: 15%;
     left: 15%;
     background-color:#65B1FC;
     border: 1px solid #000000;
