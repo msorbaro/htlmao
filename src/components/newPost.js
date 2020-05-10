@@ -115,18 +115,20 @@ class NewPost extends Component {
             start: this.state.StartDate + ":00",
             end: this.state.EndDate + ":00",
             className: 'event' + this.state.Category + this.state.Food,
-            backgroundColor: '#8ABAA6',
-            borderColor: '#8ABAA6',
-            textColor: 'black',
+            backgroundColor: '#65B1FC',
+            borderColor: '#65B1FC',
+            textColor: 'white',
+
+
 
             extendedProps: {
                 studentGroup: this.state.StudentGroup,
                 place: this.state.Place,
                 description: this.state.AdditionalDescription,
                 category: this.state.Category,
-                food: this.state.Food
+                food: this.state.Food,
 
-
+                url:"i am the url"
                 // this.state.StartDate,
                 // this.state.EndDate,
             }
@@ -203,12 +205,14 @@ class NewPost extends Component {
         return (
             <div class="trial">
                 <NavBar/>
-                <div className="bluebox">
+                {/* <div className="bluebox">
                     <p className="pageTitle">Post an Event</p>
-                </div>
+                </div> */}
                 <form onSubmit={this.saveEventInfo}>
                     <div class="OuterContainer">
-                        <br />
+                        <div>
+                            <h1 className= "Header">New Post</h1>
+                        </div>
                         <div>
                             <label>Student Group:   </label>
                             <input required class="occupy" type="text" value={this.state.StudentGroup} onChange={this.changeStudentGroup} /> 

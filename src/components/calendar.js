@@ -99,6 +99,7 @@ class Calendar extends Component {
         // console.log(title);
         // console.log(start);
         // console.log(group);
+        console.log("url: "+allEvents.event.extendedProps.url)
 
         this.setState({oneEventTitle: allEvents.event.title});
         this.setState({oneEventStart: allEvents.event.extendedProps.start});
@@ -492,9 +493,9 @@ class Calendar extends Component {
         return (
             <div>
                 <NavBar myevents={this.changeToMyEvents} allevents={this.changeToAllEvents}/>
-                <div className="bluebox">
+                {/* <div className="bluebox">
                     <p className="pageTitle">{pageTitle}</p>
-                </div>
+                </div> */}
                 <div className = "calAndFilterContainer">
                     <div><Filter
                     athleticsClicked={this.athleticsClicked}

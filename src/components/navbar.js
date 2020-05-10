@@ -49,9 +49,9 @@ class NavBar extends Component {
                 <Link to="/postevent">
                     <a>Post an Event</a>
                 </Link>
-                <Link to="/myevents" onClick={this.props.myevents}>
+                {/* <Link to="/myevents" onClick={this.props.myevents}>
                     <a>My Events</a>
-                </Link>
+                </Link> */}
                 <Link to="/allevents" onClick={this.props.allevents}>
                     <a>All Events</a>
                 </Link>

@@ -9,7 +9,7 @@
     align-self: center;
     text-align: center;
     color: black;
-    background-color: #EBEBEB;
+    background-color: #D6D6D6;
     font-family: Open Sans;
     width: 48vw;
     height: 90vh;
@@ -46,11 +46,26 @@ label{
 }
 
 .submitButton{
-    background: #00693E;
+    /* background: #00693E; */
+    background: #007D5F;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 35px;
     width: 20vw;
     height: 8vh;
     font-size: 35px;
     color: white;
+}
+
+.submitButton:focus {
+    outline:0;
+}
+.submitButton:active{
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.Header {
+    color: black;
+    font-family: Open Sans;
+    font-size: 45px;
+
 }

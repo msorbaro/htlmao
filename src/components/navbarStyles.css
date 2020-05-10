@@ -29,21 +29,23 @@ flex-direction: column;
 .navbar {
   
   overflow: hidden;
-  background-color: #00693E;
+  /* background-color: #00693E; */
+  background-color: #007D5F;
   min-height: 13vh;
   flex-direction: row-reverse;
   display: flex;
 }
 
-.logout {
+/* .logout {
   background-color: #8ABAA6;
-}
+} */
 
 .loginNavbarlinks a {
   float: right;
   font-family: "Roboto";
   font-size: 20px;
-  color: #00693E;
+  /* color: #00693E; */
+  color: #007D5F;
   text-align: center;
   padding: 18px 14px;
   text-decoration: none;
@@ -69,9 +71,10 @@ flex-direction: column;
   background-color: #65B1FC;
 }
 
-/* .navbarlinks a:focus {
-  font-weight: bold;
-} */
+.navbarlinks a:focus {
+  /* font-weight: bold; */
+  /* background-color: #65B1FC; */
+}
 
 .kegpic {
     position: relative;
