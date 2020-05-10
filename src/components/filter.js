@@ -21,7 +21,10 @@ class Filter extends Component {
                         <input type="checkbox" id="athletics" name="category" onClick={this.athleticsClicked}></input>
                         <label for="athletics">Athletics</label> 
                     </li>  */}
-
+                    <li>
+                        <input type="checkbox" id="athletics" name="category" onChange={this.props.athleticsClicked}></input>
+                        <label for="athletics">Athletics</label>
+                    </li> 
                     <li>
                         <input type="checkbox" id="music" name="category" onChange={this.props.musicClicked}></input>
                         <label for="music">Music</label>

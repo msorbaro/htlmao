@@ -19,8 +19,8 @@ class Calendar extends Component {
             events: [],
             unshownEvents: [],
 
-
-            //showAthletics: true,
+                //beginning state is false?
+            showAthletics: false,
             showMusic: false,
             showDance: false,
             showArt: false,
@@ -101,7 +101,6 @@ class Calendar extends Component {
         // console.log(group);
 
         this.setState({oneEventTitle: allEvents.event.title});
-        // console.log("calendar: "+this.state.oneEventTitle)
         this.setState({oneEventStart: allEvents.event.extendedProps.start});
         this.setState({oneEventEnd: allEvents.event.extendedProps.end});
         this.setState({oneEventGroup: allEvents.event.extendedProps.studentGroup});
@@ -130,48 +129,70 @@ class Calendar extends Component {
         }
     }
 
-    musicClicked=()=>{
-        console.log(this.state.showMusic)
- 
 
-        if (this.state.showMusic===false){ //about to be turned to true so show Music
-            console.log("show music")
+    athleticsClicked=()=>{
+        if (this.state.showAthletics===false){ 
             var array = Array.from(this.state.events)
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
                 const currItem=this.state.unshownEvents[currKey];
-                // console.log("className: "+currItem.className)
+                if(currItem.className.includes("eventAthletics")) {
+                    array.push(currItem);
+                    this.state.unshownEvents.splice(i,1)
+                }
+            }
+            this.setState({events:array})
+        }
+        else {
+            var array = Array.from(this.state.events)
+            for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
+                const currKey=Object.keys(this.state.events)[i];
+                const currItem=this.state.events[currKey];
+                if(currItem.className.includes("eventAthletics")) {
+                    this.state.unshownEvents.push(currItem)
+                    array.splice(i,1)
+                }
+            }
+            this.setState({events:array})
+            console.log("unshown "+this.state.unshownEvents)
+        }
+        this.setState({showAthletics: !this.state.showAthletics})
+    }
+
+
+
+
+
+
+    musicClicked=()=>{
+ 
+
+        if (this.state.showMusic===false){ 
+            var array = Array.from(this.state.events)
+            for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
+                const currKey=Object.keys(this.state.unshownEvents)[i];
+                const currItem=this.state.unshownEvents[currKey];
                 if(currItem.className.includes("eventMusic")) {
                     array.push(currItem);
                     this.state.unshownEvents.splice(i,1)
                 }
             }
             this.setState({events:array})
-            // console.log(this.state.events)
 
-            // this.setState({showMusic: true})
-            // console.log("state: "+this.state.showMusic)
+
         }
         else {
-            console.log("stop showing music")
             var array = Array.from(this.state.events)
-            // console.log(Object.keys(this.state.unshownEvents).length)
             for(let i=Object.keys(this.state.events).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.events)[i];
                 const currItem=this.state.events[currKey];
-                // console.log("className: "+currItem.className)
                 if(currItem.className.includes("eventMusic")) {
-                    // console.log("match: "+currItem)
                     this.state.unshownEvents.push(currItem)
                     array.splice(i,1)
                 }
             }
             this.setState({events:array})
-            // console.log("events: "+this.state.events)
             console.log("unshown "+this.state.unshownEvents)
-
-            // this.setState({showMusic: false})
-            // console.log("state: "+this.state.showMusic)
         }
         this.setState({showMusic: !this.state.showMusic})
     }
@@ -476,6 +497,7 @@ class Calendar extends Component {
                 </div>
                 <div className = "calAndFilterContainer">
                     <div><Filter
+                    athleticsClicked={this.athleticsClicked}
                     musicClicked={this.musicClicked}
                     danceClicked={this.danceClicked}
                     artClicked={this.artClicked}

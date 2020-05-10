@@ -27,7 +27,7 @@ class NewPost extends Component {
             // Time:"",
             Place:"",
             AdditionalDescription:"",
-            Category:"Music",
+            Category:"Athletics",
             Food:"No",
             // Date: new Date(),
             StartDate: "",
@@ -229,7 +229,7 @@ class NewPost extends Component {
                         <div>
                             <label>Category:   </label>
                             <select value={this.state.Category} onChange={this.changeCategory}>
-                                {/* <option value="Atheltics">Athletics</option> */}
+                                <option value="Athletics">Athletics</option>
                                 <option value="Music">Music</option>
                                 <option value="Dance">Dance</option>
                                 <option value="Art">Art</option>
