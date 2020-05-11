@@ -17,22 +17,24 @@ class Calendar extends Component {
         this.state = {
             authenticated: false,
             events: [],
+            dbEvents: [],
+            oneEvent: null,
             unshownEvents: [],
-
-                //beginning state is false?
-            showAthletics: false,
-            showMusic: false,
-            showDance: false,
-            showArt: false,
-            showGreekLife: false,
-            // showProgramming: false,
-            showClub: false,
-            // showGuestSpeaker: false,
-            showHealth: false,
-            showProfessional: false,
-            showReligious: false,
-            showFood: false,
-            showOther: false,
+            //beginning state is false?
+            showAthletics: true,
+            showMusic: true,
+            showDance: true,
+            showArt: true,
+            showGreekLife: true,
+            // showProgramming: true,
+            showClub: true,
+            // showGuestSpeaker: true,
+            showHealth: true,
+            showProfessional: true,
+            showReligious: true,
+            showFood: true,
+            showOther: true,
+            allUnchecked: false,
 
             isOpen: false,
 
@@ -49,10 +51,22 @@ class Calendar extends Component {
             oneEventFood: null,
             oneEventURL: null,
 
+            eventID:0,
+
         };
     }
     calendarRef = React.createRef();
 
+
+    delete = (eventID) => {
+        console.log("eventID");
+        console.log(eventID);
+        console.log(this.state.events);
+        // db.removeNewPost(eventID);
+        // NewPost.delete(eventID);
+        // db.fetchNewPost(this.fetchedNewPosts);
+        // Is there a way to call newPost.delete from this place
+    }
 
     async componentDidMount(){
         firebase.auth().onAuthStateChanged((user) => {
@@ -81,6 +95,7 @@ class Calendar extends Component {
             // console.log(array);
             this.setState({events: array});
         }
+        this.setState({dbEvents: allEvents});
         // this.setState({events: allEvents});
     }
 
@@ -95,8 +110,10 @@ class Calendar extends Component {
     openModal=(allEvents)=>{
 
         // console.log("url: "+allEvents.event.extendedProps.url)
-
+        console.log(allEvents);
+        this.setState({oneEvent: allEvents.event})
         this.setState({oneEventTitle: allEvents.event.title});
+        // console
         this.setState({oneEventStart: allEvents.event.extendedProps.start});
         this.setState({oneEventEnd: allEvents.event.extendedProps.end});
         this.setState({oneEventGroup: allEvents.event.extendedProps.studentGroup});
@@ -128,7 +145,14 @@ class Calendar extends Component {
 
 
     athleticsClicked=()=>{
+        // if (this.state.allUnchecked===true){
+        //     this.setState({allUnchecked: false});
+        //     this.setState({unshownEvents: this.state.events});
+        //     this.setState({events: null});
+        //     console.log(this.state.unshownEvents);
+        // }
         if (this.state.showAthletics===false){ 
+            // we do wanna show athletics events
             var array = Array.from(this.state.events)
             for(let i=Object.keys(this.state.unshownEvents).length-1;i>=0;i-=1) {
                 const currKey=Object.keys(this.state.unshownEvents)[i];
@@ -153,12 +177,9 @@ class Calendar extends Component {
             this.setState({events:array})
             console.log("unshown "+this.state.unshownEvents)
         }
+        
         this.setState({showAthletics: !this.state.showAthletics})
     }
-
-
-
-
 
 
     musicClicked=()=>{
@@ -508,19 +529,21 @@ class Calendar extends Component {
 
                     /></div>
                     <div>
+                    {/* Showing the full calender here in this div */}
                     {calendar}
-
+                    <div class="modalsouterclass">
                     <div className="eventmodal">
                         <Event show={this.state.isOpen} 
                         url={this.state.oneEventURL}
                         oneEventTitle={this.state.oneEventTitle}
-                        oneEventCategory={this.state.oneEventCategory}
-                        oneEventDescription={this.state.oneEventDescription}
-                        oneEventPlace={this.state.oneEventPlace}
-                        oneEventGroup={this.state.oneEventGroup}
-                        oneEventEnd={this.state.oneEventEnd}
-                        oneEventStart={this.state.oneEventStart}
-                        oneEventFood={this.state.oneEventFood}
+                        // oneEventCategory={this.state.oneEventCategory}
+                        // oneEventDescription={this.state.oneEventDescription}
+                        // oneEventPlace={this.state.oneEventPlace}
+                        // oneEventGroup={this.state.oneEventGroup}
+                        // oneEventEnd={this.state.oneEventEnd}
+                        // oneEventStart={this.state.oneEventStart}
+                        // oneEventFood={this.state.oneEventFood}
+                        delete={this.delete}
 
                         onClose={this.closeModal} 
                         addMyEvent={this.addMyEvent}
@@ -529,17 +552,26 @@ class Calendar extends Component {
                             hello
                         </div> */}
 
-                        <div>
-                            <p>Student Group: {this.state.oneEventGroup}</p>
-                            <p>Place: {this.state.oneEventPlace}</p>
-                            <p>Category: {this.state.oneEventCategory}</p>
-                            <p>Food Provided: {this.state.oneEventFood}</p>
-                            <p>Start: {this.state.oneEventStart}</p>
-                            <p>End: {this.state.oneEventEnd}</p>
-                            <p>Additional Description: {this.state.oneEventDescription}</p>
+                        <div class="NotGridMasonSadIndeed">
+                            <p class="notHeader">{this.state.oneEventTitle}</p>
+                            <div class="splitMe">
+                                <div class="leftHalf">
+                                    <p>Student Group: {this.state.oneEventGroup}</p>
+                                    <p>Place: {this.state.oneEventPlace}</p>
+                                    <p>Category: {this.state.oneEventCategory}</p>
+                                    <p>Food Provided: {this.state.oneEventFood}</p>
+                                    <p>Start: {this.state.oneEventStart}</p>
+                                    <p>End: {this.state.oneEventEnd}</p>
+                                </div>
+                                <div class="rightHalf">
+                                    <p>Additional Description: {this.state.oneEventDescription}</p>
+                                </div>
+                            </div>
+                            {/* <button>Delete modal</button> */}
                         </div>
 
                         </Event>
+                    </div>
                     </div>
 
                         {/* <FullCalendar

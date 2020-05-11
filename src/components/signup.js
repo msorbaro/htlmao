@@ -65,7 +65,7 @@ class SignUp extends Component {
  
  render() {
      return (
-       <form onSubmit={this.signup}>
+      //  <form onSubmit={this.signup}>
          <div class="LoginContainer">
                <br />
                <div>
@@ -88,10 +88,10 @@ class SignUp extends Component {
                    <input class="occupy" type="password" value={this.state.passwordTwo} onChange={this.changepasswordTwo}/>
                </div>
                <br />
-                   <button class="submitButton" type="submit">Create Account</button>
+                   <button class="submitButton" onClick={this.signup}>Create Account</button>
                <br />
            </div>
-       </form>
+      //  </form>
      )
  }
 }

@@ -49,6 +49,7 @@ export function addNewPost(StudentGroup, EventTitle, Place, AdditionalDescriptio
 }
 
 export function removeNewPost(eventID) {
+    console.log(eventID);
     ourDB.ref('NewPost/' + eventID).remove();
 }
 

@@ -42,7 +42,7 @@ class NavBar extends Component {
         var navbar = null;
         if (this.state.authenticated) {
             navbar=(
-            <div className="navbarlinks">
+            <nav className="navbarlinks">
                 <Link to="/">
                     <a className="logout" onClick={this.signout}>Log Out</a>
                 </Link>
@@ -55,12 +55,13 @@ class NavBar extends Component {
                 <Link to="/allevents" onClick={this.props.allevents}>
                     <a>All Events</a>
                 </Link>
-            </div>
+            </nav>
             );
         }
         else {
             navbar=(
-                <div className="loginNavbarlinks">
+                // Changed div to nav
+                <nav className="loginNavbarlinks">
                     <Link to="">
                         <a className="logout">Log Out</a>
                     </Link>
@@ -73,7 +74,7 @@ class NavBar extends Component {
                     <Link to="">
                         <a>All Events</a>
                     </Link>
-                </div>
+                </nav>
                 );
         }
 
