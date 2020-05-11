@@ -5,8 +5,8 @@
     z-index: 1000;
     justify-content: center;
     width:60%;
-    height: 64%;
-    top: 18%;
+    height: 66%;
+    top: 17%;
     left: 20%;
     background-color:#007D5F;
     color: white;
@@ -22,11 +22,18 @@
     font-size: 9vh;
     /* font-family: 'Courier New', Courier, monospace; */
     font-family: Roboto;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: center;
     color: whitesmoke;
-    margin: .5vw;
+    margin: 1vh;
     /* background-color: tomato; */
+}
+
+.bold{
+    font-weight: bold;
+}
+.notBold{
+    font-weight: normal;
 }
 
 .splitMe{
@@ -36,7 +43,7 @@
 }
 
 .leftHalf{
-    height: 40vh;
+    height: 43vh;
     width: 21vw;
     display: flex;
     flex-direction: column;
@@ -48,7 +55,7 @@
 }
 
 .rightHalf{
-    height: 40vh;
+    height: 43vh;
     width: 21vw;
     align-self: flex-start;
     color: black;

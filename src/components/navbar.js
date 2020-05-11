@@ -58,48 +58,38 @@ class NavBar extends Component {
             </nav>
             );
         }
-        else {
-            navbar=(
-                // Changed div to nav
-                <nav className="loginNavbarlinks">
-                    <Link to="">
-                        <a className="logout">Log Out</a>
-                    </Link>
-                    <Link to="">
-                        <a>Post an Event</a>
-                    </Link>
-                    <Link to="">
-                        <a>My Events</a>
-                    </Link>
-                    <Link to="">
-                        <a>All Events</a>
-                    </Link>
-                </nav>
-                );
-        }
+        // else {
+        //     navbar=(
+        //         // Changed div to nav
+        //         <nav className="loginNavbarlinks">
+        //             <Link to="">
+        //                 <a className="logout">Log Out</a>
+        //             </Link>
+        //             <Link to="">
+        //                 <a>Post an Event</a>
+        //             </Link>
+        //             <Link to="">
+        //                 <a>My Events</a>
+        //             </Link>
+        //             <Link to="">
+        //                 <a>All Events</a>
+        //             </Link>
+        //         </nav>
+        //         );
+        // }
 
         return (
             <div className="navbar">
-                {navbar}
-                {/* <div className="navbarlinks">
-                    <Link to="">
-                        <a className="logout" onClick={this.signout}>Log Out</a>
-                    </Link>
-                    <Link to="/postevent">
-                        <a>Post an Event</a>
-                    </Link>
-                    <Link to="/myevents">
-                        <a>My Events</a>
-                    </Link>
-                    <Link to="/allevents">
-                        <a>All Events</a>
-                    </Link>
-                </div> */}
-                
-                <header className="TheKeg">The Keg</header>
-                <h1 className="Whatsontap">What's on tap for today?</h1>
-                <img src={require('../images/wine.png')} alt="keg pic" className="kegpic" onClick={this.bruhhhAlert}/>
 
+                <div className="leftSide">
+                    <img src={require('../images/wine.png')} alt="keg pic" className="kegpic" onClick={this.bruhhhAlert}/>
+                    <header className="TheKeg">The Keg</header>
+                    <h1 className="Whatsontap">What's on tap for today?</h1>
+                </div>
+
+                <div className="rightSide">
+                  {navbar}
+                </div>
             </div>  
         );
     }

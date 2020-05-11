@@ -68,6 +68,22 @@ class Calendar extends Component {
         // Is there a way to call newPost.delete from this place
     }
 
+    // sendEmail =()=>{
+    //     //import emailjs
+    //     var templateParams={
+    //         title: this.state.oneEventTitle
+    //     }
+    //     emailjs.send('gmail','testevent', templateParams)
+    //     .then(function(response) {
+    //         console.log('SUCCESS!',response.status,response.text);
+    //     }, function(error){
+    //         console.log('FAILED...',error);
+    //     });
+    //     emailjs.sendForm('gmail','testevent', templateParams,'user_GW5Sn4mGVb9wjgL4Ot4MT')
+    // }
+
+
+
     async componentDidMount(){
         firebase.auth().onAuthStateChanged((user) => {
             if (user){
@@ -556,15 +572,16 @@ class Calendar extends Component {
                             <p class="notHeader">{this.state.oneEventTitle}</p>
                             <div class="splitMe">
                                 <div class="leftHalf">
-                                    <p>Student Group: {this.state.oneEventGroup}</p>
-                                    <p>Place: {this.state.oneEventPlace}</p>
-                                    <p>Category: {this.state.oneEventCategory}</p>
-                                    <p>Food Provided: {this.state.oneEventFood}</p>
-                                    <p>Start: {this.state.oneEventStart}</p>
-                                    <p>End: {this.state.oneEventEnd}</p>
+                                    <p> <span className="bold">Student Group: </span><span className="notBold">{this.state.oneEventGroup}</span></p>
+                                    <p> <span className="bold">Place: </span><span className="notBold">{this.state.oneEventPlace}</span></p>
+                                    <p> <span className="bold">Category: </span><span className="notBold">{this.state.oneEventCategory}</span></p>
+                                    <p> <span className="bold">Food Provided: </span><span className="notBold">{this.state.oneEventFood}</span></p>
+                                    <p> <span className="bold">Start: </span><span className="notBold">{this.state.oneEventStart}</span></p>
+                                    <p> <span className="bold">End: </span><span className="notBold">{this.state.oneEventEnd}</span></p>
                                 </div>
                                 <div class="rightHalf">
-                                    <p>Additional Description: {this.state.oneEventDescription}</p>
+                                    <p className="bold">Additional Description:</p>
+                                    <p className="notBold">{this.state.oneEventDescription}</p>
                                 </div>
                             </div>
                             {/* <button>Delete modal</button> */}
@@ -581,6 +598,18 @@ class Calendar extends Component {
                         /> */}
                     </div>
                 </div>
+
+
+                {/* <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js">
+                </script>
+                    <script type="text/javascript">
+                    (function(){
+                     emailjs.init("user_GW5Sn4mGVb9wjgL4Ot4MT");
+                    })();
+                </script> */}
+
+
             </div>
         )
     }

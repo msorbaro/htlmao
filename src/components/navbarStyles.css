@@ -7,8 +7,9 @@ flex-direction: column;
 
 .TheKeg {
   position: relative;
-  left: -35vw;
-  font-size: 9vh;
+  left: 2vw;
+  top: 0vh;
+  font-size: 10vh;
   font-style: normal;
   font-weight: bold;
   font-family: Roboto;
@@ -17,9 +18,9 @@ flex-direction: column;
 
 .Whatsontap {
   position: relative;
-  left: -21vw;
-  top: 7vh;
-  font-size: 20px;
+  left: -14.7vw;
+  top: 6.5vh;
+  font-size: 3vh;
   font-style: normal;
   font-weight: normal;
   font-family: Roboto;
@@ -31,45 +32,46 @@ flex-direction: column;
   overflow: hidden;
   /* background-color: #00693E; */
   background-color: #007D5F;
-  min-height: 13vh;
-  flex-direction: row-reverse;
-  display: flex;
+  min-height: 14vh;
+  /* flex-direction: row-reverse; */
+  /* display: flex; */
 }
 
 /* .logout {
   background-color: #8ABAA6;
 } */
 
-.loginNavbarlinks a {
+/* .loginNavbarlinks a {
   float: right;
   font-family: "Roboto";
   font-size: 20px;
-  /* color: #00693E; */
   color: #007D5F;
   text-align: center;
   padding: 18px 14px;
   text-decoration: none;
-}
+} */
 
 .navbarlinks a {
 
   float: right;
   font-family: "Roboto";
-  font-size: 20px;
+  font-size: 3vh;
   color: white;
   text-align: center;
-  padding: 18px 14px;
+  /* padding: 18.5px 14px; */
+  padding: 2.6vh 1.1vw;
   text-decoration: none;
 }
 
-.loginNavbarlinks a:hover {
+/* .loginNavbarlinks a:hover {
   cursor: pointer;
-}
+} */
 
 
 .navbarlinks a:hover {
   background-color: #65B1FC;
 }
+
 
 /* Get this if we want to change the color of the tab we are on
 .navbarlinks a:focus {
@@ -83,8 +85,19 @@ flex-direction: column;
 
 .kegpic {
   position: relative;
-  width: 5.5%;
-  height: 5.5%;
-  left: -51vh;
-  top: 1vh;
+  width: 8%;
+  height: 8%;
+  left: 2vh;
+  top: 1.3vh;
 }
+
+.leftSide {
+  float:left;
+  display: flex;
+}
+
+.rightSide {
+  float:right;
+  display: flex;
+}
+
