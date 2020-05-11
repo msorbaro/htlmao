@@ -20,22 +20,16 @@ class Event extends Component {
             // console.log("show is true")
         return (
             <div class="modalsouterclass">
-            <div className="modal">
+            <div class="modal">
                 {/* <header className="modalTitle"> HJEHJ</header> */}
                 {/* {this.props.oneEventTitle} */}
                 {this.props.children}
                 {/* <br /> */}
                 <div className="modalButton">
-                    {/* <button onClick={this.props.onClose}>Close</button>
-                    <button onClick={this.props.addMyEvent}>Add me to your <image src={"https://blog.hubspot.com/hubfs/image8-2.jpg"}/>calendar</button>
-                    <button onClick={this.props.delete}>Delete this event</button> */}
-                    {/* <button class="crazyZScore"onClick={this.props.onClose}><image class="gImage" src={require("../images/wine.png")} alt="imgNotHere"/> Close</button> */}
-                    {/* <image  src={require("../images/wine.png")} alt="imgNotHere"/> */}
+    
                     <a><img class="gImage" onClick={this.props.onClose} src={require("../images/xbutton.png")} alt="google logo"/></a>
                     <a><img class="gImage" onClick={this.props.addMyEvent} src={require("../images/calendar.png")} alt="google logo"/></a>
                     <a><img class="gImage" onClick={this.props.delete} src={require("../images/delete.png")} alt="google logo"/></a>
-                    {/* <button class="crazyZScore"onClick={this.props.addMyEvent}><image class="gImage" src={require('../images/wine.png')} alt="imgNotHere"/> Add to Google</button>
-                    <button class="crazyZScore"onClick={this.props.delete}><image class="gImage" src={require('../images/wine.png')} alt="imgNotHere"/> Delete</button> */}
                 </div>
             </div>
             </div>

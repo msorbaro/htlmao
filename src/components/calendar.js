@@ -3,6 +3,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+
 import Filter from './filter';
 import * as db from '../datastore.js';
 import Event from './event';
@@ -514,6 +515,9 @@ class Calendar extends Component {
                 <FullCalendar
                     defaultView="dayGridMonth"
                     plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
+                    left="prev,next today"
+                    center="title"
+                    right="dayGridMonth,timeGridWeek,timeGridDay"
                     events={this.state.events}
                     eventClick={this.openModal}
             />
@@ -545,8 +549,12 @@ class Calendar extends Component {
 
                     /></div>
                     <div>
-                    {/* Showing the full calender here in this div */}
-                    {calendar}
+
+                     <div class="fullCalendar">{calendar}</div>   
+                    
+
+
+
                     <div class="modalsouterclass">
                     <div className="eventmodal">
                         <Event show={this.state.isOpen} 
