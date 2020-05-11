@@ -31,7 +31,7 @@ form{
     background-color: #D6D6D6;
     font-family: Open Sans;
     width: 50vw;
-    height: 100vh;
+    height: 115vh;
     margin: 1vw;
     border-style: solid;
     border-width: 1px;
@@ -62,7 +62,7 @@ textarea{
 }
 
 label{
-    font-family: Open Sans;
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
@@ -90,7 +90,7 @@ label{
 
 .Header {
     color: black;
-    font-family: Open Sans;
-    font-size: 45px;
+    font-family: 'Roboto';
+    font-size: 6.5vh;
 
 }
