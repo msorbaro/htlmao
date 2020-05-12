@@ -4,9 +4,7 @@ class Share extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            // stuff here
-        }
+        this.state = {}
     }
 
     render() {

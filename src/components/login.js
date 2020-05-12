@@ -7,7 +7,6 @@ import firebase from 'firebase';
 import Calendar from './calendar';
 import NavBar from './navbar';
 
-
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +28,6 @@ class Login extends Component {
                 this.setState({userEmail: ""});
             }
         });
-        // db.fetchNewPost(this.fetchedNewPosts);
     }
 
     render() {
@@ -49,10 +47,6 @@ class Login extends Component {
             this.props.history.push('/allevents');
             return(
                 null
-            // <div>
-            //     Hello {this.state.userEmail.split('.')[0]}, you are logged in 
-            // </div>
-            // Since signIn returns us to this place, do we route to allevents from here?
             )
         }
     };

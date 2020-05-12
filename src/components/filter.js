@@ -4,23 +4,14 @@ import './filterStyles.css';
 class Filter extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            
-        }
+        this.state = {}
     }
-
-
 
     render() {
         return (
             <div className="filterContainer">
                 <legend>Filter By:</legend>
                 <ul class="checkbox">
-                    {/* <li>
-                        <input type="checkbox" id="athletics" name="category" onClick={this.athleticsClicked}></input>
-                        <label for="athletics">Athletics</label> 
-                    </li>  */}
                     <li>
                         <input type="checkbox" defaultChecked="true" id="athletics" name="category" onChange={this.props.athleticsClicked} ></input>
                         <label for="athletics">Athletics</label>
@@ -41,18 +32,10 @@ class Filter extends Component {
                         <input type="checkbox" defaultChecked="true" id="greek" name="category" onChange={this.props.greekClicked}></input>
                         <label for="greek">Greek Life</label> 
                     </li>
-                    {/* <li>
-                        <input type="checkbox" id="programming" name="category" onClick={this.programmingClicked}></input>
-                        <label for="programming">Programming</label> 
-                    </li> */}
                     <li>
                         <input type="checkbox" defaultChecked="true" id="club" name="category" onChange={this.props.clubClicked}></input>
                         <label for="club">Club</label> 
                     </li>
-                    {/* <li>
-                        <input type="checkbox" id="speaker" name="category" onClick={this.speakerClicked}></input>
-                        <label for="speaker">Guest Speaker</label> 
-                    </li> */}
                     <li>
                         <input type="checkbox" defaultChecked="true" id="health" name="category" onChange={this.props.healthClicked}></input>
                         <label for="health">Health</label> 

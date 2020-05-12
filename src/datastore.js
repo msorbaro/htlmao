@@ -58,33 +58,14 @@ export function getUser(callBack) {
     
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // // get the user id and accept a snapshot of information
-        // ourDB.ref(`users/${user.uid}`).on('value', (snapshot) => { 
-        //   const currUser = snapshot.val(); // return the current user
-        //  // callBack(currUser); // call user into
-
-
-      
-        //     callBack(currUser)
         callBack(user.uid);
       }
     });
 }
-//})}
-
-
-// //fix??
-// export function getNewPost(eventID) {
-//     ourDB.ref('NewPost/'+eventID).on('value', (snapshot)=>{
-//         const oneEvent = snapshot.val();
-//         return oneEvent;
-//     });
-// }
 
 export function fetchNewPost(callback) {
     ourDB.ref('NewPost/').on('value', (snapshot) => {
         const allEvents = snapshot.val();
-        // return allEvents;
         callback(allEvents);
     });
 }

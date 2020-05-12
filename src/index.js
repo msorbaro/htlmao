@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
 import * as serviceWorker from './serviceWorker';
 import React, {Component} from 'react';
 import './App.css';
@@ -19,19 +18,16 @@ const App = () => {
   return (
     <Router>
       <div>
-        {/* <NavBar /> */}
         <Switch>
             <Route exact path="/" component={Login} />
             <Route exact path="/allevents" component={Calendar} />
             <Route exact path="/myevents" component={Calendar} />
             <Route exact path="/postevent" component={NewPost} />
-          {/* <Route component={FallBack} /> */}
         </Switch>
       </div>
     </Router>
   );
 };
-
 
 ReactDOM.render(
   <React.StrictMode>

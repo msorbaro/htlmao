@@ -1,11 +1,6 @@
 .filterContainer {
     position: relative;
     left: 5vw;
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; */
-
     border-radius: 10px;
     align-self: center;
     color: black;
@@ -61,5 +56,3 @@ ul.checkbox li label {
     margin-left: 0;
     display: inline;
 }
-
-

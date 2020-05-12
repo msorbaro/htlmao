@@ -25,8 +25,6 @@ class NavBar extends Component {
     }
 
     signout = () => {
-        // this.props.changeAuthenticateFalse();
-        // console.log("you clicked log out, navbar.signout called")
         firebase.auth().signOut().then(() => {
             console.log('logged out');
           }).catch((error) => {
@@ -34,8 +32,6 @@ class NavBar extends Component {
           });
           this.setState({ authenticated: false });
     }
-
- 
 
     renderNav() {
         
@@ -49,34 +45,12 @@ class NavBar extends Component {
                 <Link to="/postevent">
                     <a>Post an Event</a>
                 </Link>
-                {/* <Link to="/myevents" onClick={this.props.myevents}>
-                    <a>My Events</a>
-                </Link> */}
                 <Link to="/allevents" onClick={this.props.allevents}>
                     <a>All Events</a>
                 </Link>
             </nav>
             );
         }
-        // else {
-        //     navbar=(
-        //         // Changed div to nav
-        //         <nav className="loginNavbarlinks">
-        //             <Link to="">
-        //                 <a className="logout">Log Out</a>
-        //             </Link>
-        //             <Link to="">
-        //                 <a>Post an Event</a>
-        //             </Link>
-        //             <Link to="">
-        //                 <a>My Events</a>
-        //             </Link>
-        //             <Link to="">
-        //                 <a>All Events</a>
-        //             </Link>
-        //         </nav>
-        //         );
-        // }
 
         return (
             <div className="navbar">
@@ -104,6 +78,3 @@ class NavBar extends Component {
 }
 
 export default NavBar;
-
-
-
