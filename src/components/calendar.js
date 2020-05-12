@@ -51,6 +51,7 @@ class Calendar extends Component {
             oneEventCategory: null,
             oneEventFood: null,
             oneEventURL: null,
+            oneEventID: null,
 
             eventID:0,
 
@@ -59,13 +60,13 @@ class Calendar extends Component {
     calendarRef = React.createRef();
 
 
-    delete = (eventID) => {
+    delete = () => {
+        this.setState({isOpen:false})
         console.log("eventID");
-        console.log(eventID);
-        console.log(this.state.events);
-        // db.removeNewPost(eventID);
+        console.log(this.state.oneEventID);
+        db.removeNewPost(this.state.oneEventID);
         // NewPost.delete(eventID);
-        // db.fetchNewPost(this.fetchedNewPosts);
+       db.fetchNewPost(this.fetchedNewPosts);
         // Is there a way to call newPost.delete from this place
     }
 
@@ -98,15 +99,18 @@ class Calendar extends Component {
     }
     fetchedNewPosts = (allEvents) => {
         console.log("HERE");
+        console.log(allEvents);
         if(allEvents!=null) {
             var array = []
             for (let i = 0; i < Object.keys(allEvents).length; i+=1) {
                 const currKey = Object.keys(allEvents)[i];
-                // console.log(currKey);
+                console.log(currKey);
                 const currItem = allEvents[currKey];
-                // console.log(currItem);
-                // console.log("Event in item"+currItem.event);
-                array.push(currItem.event);
+            
+                const copyOfEvent = currItem.event;
+                copyOfEvent.eventID = currKey;
+         
+                array.push(copyOfEvent);
             }
             // console.log("Array");
             // console.log(array);
@@ -124,21 +128,26 @@ class Calendar extends Component {
         this.setState({isOpen:false})
     }
 
-    openModal=(allEvents)=>{
+    openModal=(fullCalendarClickedEvent)=>{
 
+        console.log(fullCalendarClickedEvent);
         // console.log("url: "+allEvents.event.extendedProps.url)
-        console.log(allEvents);
-        this.setState({oneEvent: allEvents.event})
-        this.setState({oneEventTitle: allEvents.event.title});
+        console.log(this.state.events);
+        this.setState({oneEvent: fullCalendarClickedEvent.event})
+        this.setState({oneEventTitle: fullCalendarClickedEvent.event.title});
+
+        console.log("one event: "+this.state.oneEvent)
+        console.log(this.state.oneEvent);
         // console
-        this.setState({oneEventStart: allEvents.event.extendedProps.start});
-        this.setState({oneEventEnd: allEvents.event.extendedProps.end});
-        this.setState({oneEventGroup: allEvents.event.extendedProps.studentGroup});
-        this.setState({oneEventPlace: allEvents.event.extendedProps.place});
-        this.setState({oneEventDescription: allEvents.event.extendedProps.description});
-        this.setState({oneEventCategory: allEvents.event.extendedProps.category});
-        this.setState({oneEventFood: allEvents.event.extendedProps.food});
-        this.setState({oneEventURL: allEvents.event.extendedProps.url})
+        this.setState({oneEventStart: fullCalendarClickedEvent.event.extendedProps.start});
+        this.setState({oneEventEnd: fullCalendarClickedEvent.event.extendedProps.end});
+        this.setState({oneEventGroup: fullCalendarClickedEvent.event.extendedProps.studentGroup});
+        this.setState({oneEventPlace: fullCalendarClickedEvent.event.extendedProps.place});
+        this.setState({oneEventDescription: fullCalendarClickedEvent.event.extendedProps.description});
+        this.setState({oneEventCategory: fullCalendarClickedEvent.event.extendedProps.category});
+        this.setState({oneEventFood: fullCalendarClickedEvent.event.extendedProps.food});
+        this.setState({oneEventURL: fullCalendarClickedEvent.event.extendedProps.url})
+        this.setState({oneEventID: fullCalendarClickedEvent.event.extendedProps.eventID})
       
         this.setState({isOpen: true})
 
@@ -513,7 +522,7 @@ class Calendar extends Component {
         // if (this.state.events != null && this.state.events.length !== 0) {
             calendar =
                 <FullCalendar
-                    defaultView="dayGridMonth"
+                    defaultView="timeGridWeek"
                     plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
                     left="prev,next today"
                     center="title"
