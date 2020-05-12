@@ -323,6 +323,7 @@ class NewPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            userid:"",
             events: [],
             eventID: 0,
             StudentGroup:"",
@@ -340,6 +341,13 @@ class NewPost extends Component {
     }
     componentDidMount(){
         db.fetchNewPost(this.fetchedNewPosts);
+        db.getUser(this.setUser);
+    }
+    setUser=(userID)=>{
+        console.log("you reached setUser")
+        this.setState({userid:userID})
+        console.log("new post user")
+        console.log(this.state.userID)
     }
     fetchedNewPosts= (allEvents) =>{
         // if(allEvents!=null) {
@@ -397,11 +405,12 @@ class NewPost extends Component {
     //     });
     //     // this.setState({StringDate: this.state.Date.getFullYear+"-"+this.state.Date.getMonth+"-"+this.state.Date.getDate});
     //   };
-    delete = (eventID) => {
-        // this.setState({dogs: this.state.dogs.delete(id)})
-        db.removeNewPost(eventID);
-        db.fetchNewPost(this.fetchedNewPosts);
-    }
+    // delete = (eventID) => {
+    //     // this.setState({dogs: this.state.dogs.delete(id)})
+    //     db.removeNewPost(eventID);
+    //     db.fetchNewPost(this.fetchedNewPosts);
+    // }
+    
     saveEventInfo = () => {
         let urlTitle=this.state.EventTitle.split(' ').join('+');
         // let urlDates="20200512T224000Z/20200512T221500Z";
@@ -411,15 +420,66 @@ class NewPost extends Component {
         tempStartDate = tempStartDate.split('-').join('');
         tempStartDate = tempStartDate.split(':').join('');
         // tempStartDate = tempStartDate.concat("EDT");
-        console.log(tempStartDate);
+        // console.log(tempStartDate);
         let tempEndDate = this.state.EndDate + ":00";
         tempEndDate = tempEndDate.split('-').join('');
         tempEndDate = tempEndDate.split(':').join('');
         // tempEndDate = tempEndDate+"EDT";
         // Psychhhhh
-        console.log(tempEndDate);
-        let tempURL = tempStartDate+"/"+tempEndDate;
-        let urlDates=tempURL;
+        // console.log(tempEndDate);
+        let tempURLDates = tempStartDate+"/"+tempEndDate;
+        let urlDates=tempURLDates;
+
+
+        let calStartDateTimeArr=this.state.StartDate.split('T');
+        let calStartDateArr=calStartDateTimeArr[0].split('-');
+        let newStartDate=calStartDateArr[1]+"-"+calStartDateArr[2]+"-"+calStartDateArr[0];
+        let newStartTime=calStartDateTimeArr[1];
+        let calStartDate=newStartDate+", "+newStartTime;
+
+        let calEndDateTimeArr=this.state.EndDate.split('T');
+        let calEndDateArr=calEndDateTimeArr[0].split('-');
+        let newEndDate=calEndDateArr[1]+"-"+calEndDateArr[2]+"-"+calEndDateArr[0];
+        let newEndTime=calEndDateTimeArr[1];
+        let calEndDate=newEndDate+", "+newEndTime;
+
+
+
+
+        let eventBackgroundColor = '#007D5F';
+        let thisCategory=this.state.Category;
+
+
+        if (thisCategory==="Athletics") {
+            eventBackgroundColor = '#36A300';
+        }
+        else if (thisCategory==="Music") {
+            eventBackgroundColor = '#2B8F00';
+        }
+        else if (thisCategory==="Dance") {
+            eventBackgroundColor = '#1A6900';
+        }
+        else if (thisCategory==="Art") {
+            eventBackgroundColor = '#01571C';
+        }
+        else if (thisCategory==="Greek") {
+            eventBackgroundColor = '#00A18C';
+        }
+        else if (thisCategory==="Club") {
+            eventBackgroundColor = '#0091A1';
+        }
+        else if (thisCategory==="Health") {
+            eventBackgroundColor = '#0073A1';
+        }
+        else if (thisCategory==="Professional") {
+            eventBackgroundColor = '#004BA1';
+        }
+        else if (thisCategory==="Religious") {
+            eventBackgroundColor = '#002BA1';
+        }
+        else if (thisCategory==="Other") {
+            eventBackgroundColor = '#0015A1';
+        }
 
         var event = {
             title: this.state.EventTitle,
@@ -428,17 +488,20 @@ class NewPost extends Component {
             className: 'event' + this.state.Category + this.state.Food,
             // backgroundColor: '#65B1FC',
             // borderColor: '#65B1FC',
-            backgroundColor: '#007D5F',
-            borderColor: '#007D5F',
+            backgroundColor: eventBackgroundColor,
+            borderColor: eventBackgroundColor,
             textColor: 'white',
             extendedProps: {
+                userID: this.state.userid,
                 studentGroup: this.state.StudentGroup,
                 place: this.state.Place,
                 description: this.state.AdditionalDescription,
                 category: this.state.Category,
                 food: this.state.Food,
-                start: this.state.StartDate + ":00",
-                end: this.state.EndDate + ":00",
+                // start: this.state.StartDate + ":00",
+                // end: this.state.EndDate + ":00",
+                start: calStartDate,
+                end: calEndDate,
                 url:" https://www.google.com/calendar/render?action=TEMPLATE&text="+urlTitle+"&dates="+urlDates+"&location="+urlLoc+"&details="+urlDet,
                 // this.state.StartDate,
                 // this.state.EndDate,
@@ -473,6 +536,8 @@ class NewPost extends Component {
         db.fetchNewPost(this.fetchedNewPosts);
         this.props.history.push('/allevents');
     }
+
+    
     setEvents = (allEvents) => {
         if (allEvents!= null) {
             var array = []

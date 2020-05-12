@@ -16,6 +16,8 @@ class Calendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
+            userid:null,
             authenticated: false,
             events: [],
             dbEvents: [],
@@ -38,10 +40,11 @@ class Calendar extends Component {
             allUnchecked: false,
 
             isOpen: false,
+            showTrash: false,
 
             allEventsPage: true,
 
-
+            oneEventUserID:null,
             oneEventTitle: "hello:)",
             oneEventStart: null,
             oneEventEnd: null,
@@ -61,14 +64,23 @@ class Calendar extends Component {
 
 
     delete = () => {
+        console.log("you are in delete")
+        // console.log(this.state.oneEventUserID)
+        // console.log(this.state.userID)
+        // if(this.state.oneEventUserID===this.state.userID){
         this.setState({isOpen:false})
-        console.log("eventID");
-        console.log(this.state.oneEventID);
+        // console.log("eventID");
+        // console.log(this.state.oneEventID);
         db.removeNewPost(this.state.oneEventID);
         // NewPost.delete(eventID);
        db.fetchNewPost(this.fetchedNewPosts);
         // Is there a way to call newPost.delete from this place
-    }
+        // }
+        // else {
+        //     alert("you cannot delete this")
+        // }
+
+}
 
     // sendEmail =()=>{
     //     //import emailjs
@@ -96,7 +108,14 @@ class Calendar extends Component {
             }
         });
         db.fetchNewPost(this.fetchedNewPosts); //fetchedNewPosts is equivalent to callback
+        db.getUser(this.setUserID);
     }
+    setUserID=(userID)=>{
+        console.log("calendar user id:");
+        console.log(this.state.userid)
+        this.setState({userid: userID})
+    }
+
     fetchedNewPosts = (allEvents) => {
         console.log("HERE");
         console.log(allEvents);
@@ -130,15 +149,14 @@ class Calendar extends Component {
 
     openModal=(fullCalendarClickedEvent)=>{
 
-        console.log(fullCalendarClickedEvent);
+        // console.log(fullCalendarClickedEvent);
         // console.log("url: "+allEvents.event.extendedProps.url)
-        console.log(this.state.events);
-        this.setState({oneEvent: fullCalendarClickedEvent.event})
-        this.setState({oneEventTitle: fullCalendarClickedEvent.event.title});
+        // console.log(this.state.events);
+        // this.setState({oneEvent: fullCalendarClickedEvent.event})
 
-        console.log("one event: "+this.state.oneEvent)
-        console.log(this.state.oneEvent);
-        // console
+
+        this.setState({oneEventTitle: fullCalendarClickedEvent.event.title});
+        this.setState({oneEventUserID: fullCalendarClickedEvent.event.extendedProps.userID})
         this.setState({oneEventStart: fullCalendarClickedEvent.event.extendedProps.start});
         this.setState({oneEventEnd: fullCalendarClickedEvent.event.extendedProps.end});
         this.setState({oneEventGroup: fullCalendarClickedEvent.event.extendedProps.studentGroup});
@@ -148,8 +166,20 @@ class Calendar extends Component {
         this.setState({oneEventFood: fullCalendarClickedEvent.event.extendedProps.food});
         this.setState({oneEventURL: fullCalendarClickedEvent.event.extendedProps.url})
         this.setState({oneEventID: fullCalendarClickedEvent.event.extendedProps.eventID})
+
+        if (this.state.oneEventUserID===this.state.userID){
+            console.log("ids match!")
+            this.setState({showTrash:true})
+        }
+        else{
+            console.log("ids don't match")
+            this.setState({showTrash:false})
+        }
       
         this.setState({isOpen: true})
+
+        // console.log("one event id: ")
+        // console.log(this.state.oneEventUserID);
 
         // console.log(this.state.oneEventStart)
         // console.log(this.state.oneEventEnd)
@@ -524,9 +554,14 @@ class Calendar extends Component {
                 <FullCalendar
                     defaultView="timeGridWeek"
                     plugins={[ timeGridPlugin, dayGridPlugin, interactionPlugin ]}
-                    left="prev,next today"
-                    center="title"
-                    right="dayGridMonth,timeGridWeek,timeGridDay"
+                    // header={
+                    //     center="title",
+                    //     left="prev,next today",
+                    //     right="dayGridMonth,timeGridWeek,timeGridDay"
+                    // }
+                
+                
+
                     events={this.state.events}
                     eventClick={this.openModal}
             />
@@ -569,6 +604,7 @@ class Calendar extends Component {
                         <Event show={this.state.isOpen} 
                         url={this.state.oneEventURL}
                         oneEventTitle={this.state.oneEventTitle}
+                        showTrash={this.state.showTrash}
                         // oneEventCategory={this.state.oneEventCategory}
                         // oneEventDescription={this.state.oneEventDescription}
                         // oneEventPlace={this.state.oneEventPlace}

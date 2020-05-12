@@ -53,6 +53,25 @@ export function removeNewPost(eventID) {
     ourDB.ref('NewPost/' + eventID).remove();
 }
 
+export function getUser(callBack) {
+    console.log("getting user");
+    
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // // get the user id and accept a snapshot of information
+        // ourDB.ref(`users/${user.uid}`).on('value', (snapshot) => { 
+        //   const currUser = snapshot.val(); // return the current user
+        //  // callBack(currUser); // call user into
+
+
+      
+        //     callBack(currUser)
+        callBack(user.uid);
+      }
+    });
+}
+//})}
+
 
 // //fix??
 // export function getNewPost(eventID) {
